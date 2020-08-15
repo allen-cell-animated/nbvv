@@ -1,26 +1,33 @@
-# Project name
+# Volume Viewer Jupyter Notebook Extension
 
-One line description
+Embeds the Allen Institute web-based 3d viewer in Jupyter notebooks
 
 ---
 
 ## Description
 
-Main features in a brief descriptive text.
+Most 3D viewers are far too heavyweight to use for quick visualization tasks when experimenting with tractably-sized (analyzing, checking, ...) 3D volumetric datasets.  ivvv is a multichannel volume viewer for interactive data exploration in jupyter. This is a jupyter widget that provides volumetric rendering given a multiple channel zstack as a numpy array.
+
+Envisioned user group is anyone who wants a robust and quick way to interactively interrogate volumetric data as part of their workflows; domain which motivated development is multi-channel volumetric light/fluorescence microscopy datasets.  The viewer is optimized for volume data that has finer xy resolution than z resolution.
 
 ## Installation
 
-Describe how to obtain the software and get it ready to run
+`pip install ivvv`
+`jupyter nbextension install --py ivvv`
+`jupyter nbextension enable ivvv --py`
 
 ## Documentation
 
 If you have more extensive technical documentation (whether generated or not), ensure they are published to the following address:
 For full package documentation please visit
-[organization.github.io/projectname](https://organization.github.io/projectname/index.html).
+[allen-cell-animated.github.io/ivvv](https://allen-cell-animated.github.io/ivvv/index.html).
 
 ## Quick Start
 
-Describe the most common operations, step by step, that a first time user would want to know, here.
+In a Jupyter notebook, load or create volume data in a numpy array.
+Display the numpy data using 
+`import ivvv`
+`ivvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0))`
 
 ## Development
 
