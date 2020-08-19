@@ -29,10 +29,23 @@ class VolumeWidget(ipywidgets.DOMWidget):
 
 
 # expect CZYX
-def volshow(image, spacing=(1.0, 1.0, 1.0), density=0.1, brightness=1.0):
+def volshow(
+    image, spacing=(1.0, 1.0, 1.0), density=0.1, brightness=1.0, channel_names=None
+):
+    # assume CZYX if 4d and ZYX if 3d.
+    if len(image.shape) > 4:
+        return "Image must be 3 or 4 dimensional"
+    if len(image.shape) < 3:
+        return "Image must be 3 or 4 dimensional"
+    # add a channel dimension if needed
+    if len(image.shape) == 3:
+        image = numpy.expand_dims(image, axis=0)
+
     volume_widget = VolumeWidget()
 
-    dims_object = ivvv.img_prep.atlas_dimensions(image, physical_pixel_size=spacing)
+    dims_object = ivvv.img_prep.atlas_dimensions(
+        image, physical_pixel_size=spacing, channel_names=channel_names
+    )
     # image MUST have a name
     dims_object["name"] = "Image0"
     volume_widget.dimensions = dims_object
@@ -45,7 +58,6 @@ def volshow(image, spacing=(1.0, 1.0, 1.0), density=0.1, brightness=1.0):
             volume_widget.dimensions["tile_height"],
         ),
     )
-    # image = image.transpose([0, 1, 3, 2])
 
     # pass to javascript as array of ZYX volumes, one per channel
     volume_widget.image = [image[index] for index in range(image.shape[0])]
