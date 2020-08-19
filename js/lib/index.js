@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "antd/dist/antd.css";
-import "./style.css";
+import "./style.less";
 
 var VolumeWidgetView = widgets.DOMWidgetView.extend({
   initialize: function () {

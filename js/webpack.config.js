@@ -10,7 +10,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Custom webpack rules are generally the same for all webpack bundles, hence
 // stored in a separate local variable.
-var rules = [{
+var rules = [
+  {
     test: /\.(ts|tsx|js|jsx)$/,
     exclude: /node_modules/,
     use: ["babel-loader"],
@@ -41,7 +42,7 @@ var rules = [{
   },
   {
     test: /\.less$/,
-    use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"],
+    use: ["style-loader", "css-loader", "less-loader"],
   },
 
   {
@@ -50,7 +51,8 @@ var rules = [{
   },
 ];
 
-module.exports = [{
+module.exports = [
+  {
     // Notebook extension
     //
     // This bundle only contains the part of the JavaScript that is run on
