@@ -1,12 +1,12 @@
 {
-  "name": "ivvv",
+  "name": "nbvv",
   "version": "0.1.0",
   "description": "Interactive volumetric voxel viewing",
   "author": "aics",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/imaging-tools/ivvv.git"
+    "url": "https://github.com/allen-cell-animated/nbvv.git"
   },
   "keywords": [
     "jupyter",

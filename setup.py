@@ -75,8 +75,8 @@ class NPM(Command):
     node_modules = os.path.join(node_root, "node_modules")
 
     targets = [
-        os.path.join(here, "ivvv", "static", "extension.js"),
-        os.path.join(here, "ivvv", "static", "index.js"),
+        os.path.join(here, "nbvv", "static", "extension.js"),
+        os.path.join(here, "nbvv", "static", "index.js"),
     ]
 
     def initialize_options(self):
@@ -140,27 +140,27 @@ class NPM(Command):
 
 
 version_ns = {}
-with open(os.path.join(here, "ivvv", "_version.py")) as f:
+with open(os.path.join(here, "nbvv", "_version.py")) as f:
     exec(f.read(), {}, version_ns)
 
 setup_args = {
-    "name": "ivvv",
+    "name": "nbvv",
     "version": version_ns["__version__"],
     "description": "Interactive volumetric voxel viewing",
     "long_description": readme(),
     "include_package_data": True,
     "data_files": [
         (
-            "share/jupyter/nbextensions/ivvv",
+            "share/jupyter/nbextensions/nbvv",
             [
-                "ivvv/static/extension.js",
-                "ivvv/static/index.js",
-                "ivvv/static/index.js.map",
+                "nbvv/static/extension.js",
+                "nbvv/static/index.js",
+                "nbvv/static/index.js.map",
             ],
         )
         # commenting this out because it breaks Windows build
         # ,
-        # ('etc/jupyter/nbconfig/notebook.d/' ,['ivvv.json'])
+        # ('etc/jupyter/nbconfig/notebook.d/' ,['nbvv.json'])
     ],
     "install_requires": [
         "ipywidgets>=7.0.0",
@@ -179,7 +179,7 @@ setup_args = {
     },
     "author": "aics",
     "author_email": "danielt@alleninstitute.org",
-    "url": "https://github.com/allen-cell-modeling/ivvv",
+    "url": "https://github.com/allen-cell-animated/nbvv",
     "keywords": ["ipython", "jupyter", "widgets",],
     "classifiers": [
         "Development Status :: 4 - Beta",

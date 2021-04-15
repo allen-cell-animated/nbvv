@@ -1,7 +1,7 @@
 import ipydatawidgets
 import ipywidgets
 from ipywidgets import interact, interactive, fixed, interact_manual
-import ivvv.img_prep
+import nbvv.img_prep
 import numpy
 import traitlets
 
@@ -10,7 +10,7 @@ import traitlets
 class VolumeWidget(ipywidgets.DOMWidget):
     _view_name = traitlets.Unicode("VolumeWidgetView").tag(sync=True)
 
-    _view_module = traitlets.Unicode("ivvv").tag(sync=True)
+    _view_module = traitlets.Unicode("nbvv").tag(sync=True)
 
     _view_module_version = traitlets.Unicode("1.0.0").tag(sync=True)
 
@@ -43,7 +43,7 @@ def volshow(
 
     volume_widget = VolumeWidget()
 
-    dims_object = ivvv.img_prep.atlas_dimensions(
+    dims_object = nbvv.img_prep.atlas_dimensions(
         image, physical_pixel_size=spacing, channel_names=channel_names
     )
     # image MUST have a name
@@ -51,7 +51,7 @@ def volshow(
     volume_widget.dimensions = dims_object
 
     # downsample and normalize for browser rendering
-    image = ivvv.img_prep.img_prep(
+    image = nbvv.img_prep.img_prep(
         image,  # CZYX
         shape=(
             volume_widget.dimensions["tile_width"],
