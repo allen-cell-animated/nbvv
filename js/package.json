@@ -1,6 +1,6 @@
 {
   "name": "nbvv",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Interactive volumetric voxel viewing",
   "author": "aics",
   "main": "lib/index.js",
