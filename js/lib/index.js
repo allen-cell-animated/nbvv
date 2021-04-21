@@ -41,7 +41,7 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
         {
           rawData: volume,
           rawDims: dimensions,
-          appHeight: "100%",
+          appHeight: "400px",
           defaultSurfacesOn: [],
           defaultVolumesOn: [0],
           initialChannelAcc: {

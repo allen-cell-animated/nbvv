@@ -163,9 +163,9 @@ setup_args = {
         # ('etc/jupyter/nbconfig/notebook.d/' ,['nbvv.json'])
     ],
     "install_requires": [
-        "ipywidgets>=7.0.0",
+        "ipywidgets>=7.6.3",
         "numpy>=1.14.3",
-        "ipydatawidgets>=3.0.0",
+        "ipydatawidgets>=4.2.0",
         "scipy>=1.0.0",
         "scikit-image>=0.13.0",
     ],

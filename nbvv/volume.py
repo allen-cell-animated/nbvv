@@ -41,7 +41,7 @@ def volshow(
     if len(image.shape) == 3:
         image = numpy.expand_dims(image, axis=0)
 
-    volume_widget = VolumeWidget()  # layout=Layout(height="200px", max_height="200px", min_height="200px"))
+    volume_widget = VolumeWidget()
 
     dims_object = nbvv.img_prep.atlas_dimensions(
         image, physical_pixel_size=spacing, channel_names=channel_names
