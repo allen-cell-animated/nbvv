@@ -17,7 +17,7 @@ project documentation. If you cannot find the documentation you're
 looking for, please file a GitHub issue with details of what
 you'd like to see documented.
 
-To release a new version of ivvv on PyPI:
+To release a new version of nbvv on PyPI:
 
 Update _version.py (set release version, remove 'dev') 
 git add the _version.py file and git commit 
@@ -29,7 +29,7 @@ git add and git commit
 `git push`
 `git push --tags`
 
-To release a new version of ivvv on NPM:
+To release a new version of nbvv on NPM:
 
 clean out the `dist` and `node_modules` directories:
 `git clean -fdx`

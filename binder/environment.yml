@@ -1,4 +1,4 @@
-name: ivvv-env
+name: nbvv-env
 channels:
   - conda-forge
 dependencies:

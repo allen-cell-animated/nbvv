@@ -1,4 +1,4 @@
 pip install .
-jupyter nbextension install --py ivvv
-jupyter nbextension enable ivvv --py
+jupyter nbextension install --py nbvv
+jupyter nbextension enable nbvv --py
 

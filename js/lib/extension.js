@@ -2,7 +2,7 @@ if (window.require) {
     window.require.config({
         map: {
             "*" : {
-                'ivvv': 'nbextensions/ivvv/index',
+                'nbvv': 'nbextensions/nbvv/index',
                 "jupyter-js-widgets": "nbextensions/jupyter-js-widgets/extension"
             }
         }

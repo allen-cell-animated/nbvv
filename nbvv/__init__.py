@@ -8,7 +8,7 @@ def _jupyter_nbextension_paths():
         {
             "section": "notebook",
             "src": "static",
-            "dest": "ivvv",
-            "require": "ivvv/extension",
+            "dest": "nbvv",
+            "require": "nbvv/extension",
         }
     ]
