@@ -25,8 +25,8 @@ Then you can run `build.sh` from this repo, or:
 To install from pypi (not yet!) install the package:
 `pip install nbvv`
 and then enable the extension in jupyter:
-`jupyter nbextension install --py nbvv`
-`jupyter nbextension enable nbvv --py`
+`jupyter nbextension install --py nbvv --sys-prefix`
+`jupyter nbextension enable nbvv --py --sys-prefix`
 
 ## Documentation
 

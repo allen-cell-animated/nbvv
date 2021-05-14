@@ -1,4 +1,3 @@
 pip install .
-jupyter nbextension install --py nbvv
-jupyter nbextension enable nbvv --py
-
+jupyter nbextension install --py nbvv --sys-prefix
+jupyter nbextension enable nbvv --py --sys-prefix
