@@ -30,13 +30,8 @@ jobs:
         --wheel
         --outdir dist/
         .
-    - name: check token
-      env:
-        MY_PYPI_TOK: ${{ secrets.PYPI_TOKEN }}
-      run: echo TOKEN \" "$MY_PYPI_TOK" \"
     - name: Publish to pypi
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         user: __token__
         password: ${{ secrets.PYPI_TOKEN }}
-        verbose: true
