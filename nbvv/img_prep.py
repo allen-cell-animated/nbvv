@@ -18,8 +18,10 @@ def resize(image, output_shape):
     response = numpy.zeros((image.shape[0], output_shape[1], output_shape[0]))
 
     for index, image_plane in enumerate(image):
+        # order=0 nearest neighbor for labeled/segmentation images,
+        # order>0 for raw intensity data? 1 is default
         response[index] = skimage.transform.rescale(
-            image_plane, scale, preserve_range=True
+            image_plane, scale, preserve_range=True, order=0
         )
         # response[index] = skimage.transform.resize(
         #     image_plane, output_shape, mode="reflect", anti_aliasing=downsampling
