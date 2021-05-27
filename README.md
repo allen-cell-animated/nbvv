@@ -12,15 +12,21 @@ Envisioned user group is anyone who wants a robust and quick way to interactivel
 
 ## Installation
 
-install the package:
-`pip install nbvv`
-
-make sure you have jupyter notebook and nbextensions installed (not necessary in every environment):
+To install from source:
+You will need to make sure nodejs and npm are installed on your system.
+One way to do this is using `nvm`, for example:
+`nvm install 14.17.0`
+`nvm use 14.17.0`
+Make sure you have jupyter notebook and nbextensions installed (not necessary in every environment):
 `pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user`
+Then you can run `build.sh` from this repo, or:
+`pip install .`
 
-enable the extension in jupyter:
-`jupyter nbextension install --py nbvv`
-`jupyter nbextension enable nbvv --py`
+To install from pypi (not yet!) install the package:
+`pip install nbvv`
+and then enable the extension in jupyter:
+`jupyter nbextension install --py nbvv --sys-prefix`
+`jupyter nbextension enable nbvv --py --sys-prefix`
 
 ## Documentation
 
