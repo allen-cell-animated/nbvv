@@ -40,9 +40,9 @@
     "worker-loader": "^3.0.1"
   },
   "dependencies": {
-    "@aics/web-3d-viewer": "^1.0.0",
+    "@aics/web-3d-viewer": "^1.1.0",
     "@jupyter-widgets/base": "^3.0.0",
-    "antd": "~3.16.3",
+    "antd": "~3.20.x",
     "chokidar": "^3.4.1",
     "lodash": "^4.17.4",
     "react": "^16.13.1",

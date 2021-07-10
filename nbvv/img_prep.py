@@ -102,14 +102,12 @@ def atlas_dimensions(
 
 
 def img_prep(img, shape=(128, 128)):
-    """Given an input n dimensional image, prep for display
+    """Given an input 4D CZYX image, prep for display
 
     Parameters
     ----------
     img : array
         Numpy array in CZYX (channel, plane, row, column) format
-    size_lim : int
-        largest dimension allowed
     shape : tuple(int)
         This is the volume's preferred xy size for texture atlassing for realtime display
         as computed by atlas_dimemsions
