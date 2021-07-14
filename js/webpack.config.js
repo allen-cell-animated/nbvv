@@ -1,8 +1,5 @@
 var path = require("path");
-var fs = require("fs");
 var version = require("./package.json").version;
-
-const lessToJs = require("less-vars-to-js");
 
 // Custom webpack rules are generally the same for all webpack bundles, hence
 // stored in a separate local variable.
