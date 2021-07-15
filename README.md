@@ -15,18 +15,29 @@ Envisioned user group is anyone who wants a robust and quick way to interactivel
 To install from source:
 You will need to make sure nodejs and npm are installed on your system.
 One way to do this is using `nvm`, for example:
-`nvm install 14.17.0`
-`nvm use 14.17.0`
-Make sure you have jupyter notebook and nbextensions installed (not necessary in every environment):
-`pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user`
-Then you can run `build.sh` from this repo, or:
-`pip install .`
+```
+nvm install 14.17.0
+nvm use 14.17.0
+```
 
-To install from pypi (not yet!) install the package:
-`pip install nbvv`
+Make sure you have jupyter notebook and nbextensions installed (not necessary in every environment):
+```
+pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user
+```
+Then you can run `build.sh` from this repo, or:
+```
+pip install .
+```
+
+To install from pypi install the package:
+```
+pip install nbvv
+```
 and then enable the extension in jupyter:
-`jupyter nbextension install --py nbvv --sys-prefix`
-`jupyter nbextension enable nbvv --py --sys-prefix`
+```
+jupyter nbextension install --py nbvv --sys-prefix
+jupyter nbextension enable nbvv --py --sys-prefix
+```
 
 ## Documentation
 
@@ -37,13 +48,17 @@ For full package documentation please visit
 ## Quick Start
 
 try the demo notebook:
-`jupyter notebook examples/demo.ipynb`
+```
+jupyter notebook examples/demo.ipynb
+```
 
 In a Jupyter notebook, load or create volume data in a numpy array.
 The data should be of shape (Z,Y,X) or (C,Z,Y,X) for multi-channel data.
 Display the numpy data using
-`import nbvv`
-`nbvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0))`
+```
+import nbvv
+nbvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0))
+```
 
 ## Development
 
