@@ -18,8 +18,10 @@ def resize(image, output_shape):
     response = numpy.zeros((image.shape[0], output_shape[1], output_shape[0]))
 
     for index, image_plane in enumerate(image):
+        # order=0 nearest neighbor for labeled/segmentation images,
+        # order>0 for raw intensity data? 1 is default
         response[index] = skimage.transform.rescale(
-            image_plane, scale, preserve_range=True
+            image_plane, scale, preserve_range=True, order=0, anti_aliasing=False
         )
         # response[index] = skimage.transform.resize(
         #     image_plane, output_shape, mode="reflect", anti_aliasing=downsampling
@@ -100,14 +102,12 @@ def atlas_dimensions(
 
 
 def img_prep(img, shape=(128, 128)):
-    """Given an input n dimensional image, prep for display
+    """Given an input 4D CZYX image, prep for display
 
     Parameters
     ----------
     img : array
         Numpy array in CZYX (channel, plane, row, column) format
-    size_lim : int
-        largest dimension allowed
     shape : tuple(int)
         This is the volume's preferred xy size for texture atlassing for realtime display
         as computed by atlas_dimemsions

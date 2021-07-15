@@ -1,12 +1,5 @@
 var path = require("path");
-var fs = require("fs");
 var version = require("./package.json").version;
-
-const lessToJs = require("less-vars-to-js");
-const themeVariables = lessToJs(
-  fs.readFileSync(path.join(__dirname, "./lib/styles/ant-vars.less"), "utf8")
-);
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Custom webpack rules are generally the same for all webpack bundles, hence
 // stored in a separate local variable.
@@ -42,7 +35,16 @@ var rules = [
   },
   {
     test: /\.less$/,
-    use: ["style-loader", "css-loader", "less-loader"],
+    use: [
+      "style-loader",
+      "css-loader",
+      {
+        loader: "less-loader",
+        options: {
+          lessOptions: { javascriptEnabled: true },
+        },
+      },
+    ],
   },
 
   {
