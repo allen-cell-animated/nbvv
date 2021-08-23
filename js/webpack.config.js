@@ -46,11 +46,6 @@ var rules = [
       },
     ],
   },
-
-  {
-    test: /Worker\.js$/,
-    use: "worker-loader?inline=true",
-  },
 ];
 
 module.exports = [
