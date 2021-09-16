@@ -62,7 +62,9 @@ module.exports = [
     output: {
       filename: "extension.js",
       path: path.resolve(__dirname, "..", "nbvv", "static"),
-      libraryTarget: "amd",
+      library: {
+        type: "amd",
+      }
     },
   },
   {
@@ -76,7 +78,10 @@ module.exports = [
     output: {
       filename: "index.js",
       path: path.resolve(__dirname, "..", "nbvv", "static"),
-      libraryTarget: "amd",
+      library: {
+        type: "umd",
+      },
+      publicPath: "/nbextensions/nbvv/"
     },
     devtool: "source-map",
     module: {
@@ -103,8 +108,11 @@ module.exports = [
     output: {
       filename: "index.js",
       path: path.resolve(__dirname, "dist"),
-      libraryTarget: "amd",
-      publicPath: "https://unpkg.com/nbvv@" + version + "/dist/",
+      library: {
+        name: "nbvv",
+        type: "umd",
+      },
+      publicPath: "https://unpkg.com/nbvv@" + version + "/dist/"
     },
     devtool: "source-map",
     module: {
