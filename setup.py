@@ -148,6 +148,7 @@ setup_args = {
     "version": version_ns["__version__"],
     "description": "Interactive volumetric voxel viewing",
     "long_description": readme(),
+    "long_description_content_type": "text/markdown",
     "include_package_data": True,
     "data_files": [
         (
