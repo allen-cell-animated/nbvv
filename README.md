@@ -41,9 +41,7 @@ jupyter nbextension enable nbvv --py --sys-prefix
 
 ## Documentation
 
-If you have more extensive technical documentation (whether generated or not), ensure they are published to the following address:
-For full package documentation please visit
-[allen-cell-animated.github.io/nbvv](https://allen-cell-animated.github.io/nbvv/index.html).
+Extended documentation is not available yet. When completed it will be made available at: [allen-cell-animated.github.io/nbvv](https://allen-cell-animated.github.io/nbvv/index.html).
 
 ## Quick Start
 
@@ -57,7 +55,7 @@ The data should be of shape (Z,Y,X) or (C,Z,Y,X) for multi-channel data.
 Display the numpy data using
 ```
 import nbvv
-nbvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0))
+nbvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0), channel_names=my_list_of_channel_name_strings)
 ```
 
 ## Development
