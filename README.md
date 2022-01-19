@@ -24,16 +24,13 @@ Make sure you have jupyter notebook and nbextensions installed (not necessary in
 ```
 pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user
 ```
-Then you can run `build.sh` from this repo, or:
-```
-pip install .
-```
 
-To install from pypi install the package:
-```
-pip install nbvv
-```
-and then enable the extension in jupyter:
+Install nbvv in one of three ways:
+1. Run `build.sh` from this repo
+2. `pip install .`
+3. Install from PyPI: `pip install nbvv`
+
+Then enable the extension in jupyter:
 ```
 jupyter nbextension install --py nbvv --sys-prefix
 jupyter nbextension enable nbvv --py --sys-prefix
