@@ -21,8 +21,8 @@ from jupyter_packaging import (
 here = os.path.dirname(os.path.abspath(__file__))
 
 log.set_verbosity(log.DEBUG)
-log.info("setup.py entered")
-log.info("$PATH=%s" % os.environ["PATH"])
+# log.info("setup.py entered")
+# log.info("$PATH=%s" % os.environ["PATH"])
 
 
 def skip_if_exists(paths, CommandClass):
