@@ -4,7 +4,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "antd/dist/antd.css";
-import "./style.less";
+// TODO: this starts as .less and needs to be converted to .css in tsc step
+import "./style.css";
 
 var VolumeWidgetView = widgets.DOMWidgetView.extend({
   initialize: function () {
