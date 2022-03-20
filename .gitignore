@@ -104,5 +104,9 @@ venv.bak/
 
 .idea
 node_modules/
+nbvv/static/
 static/
 js/lib/
+js/node_modules/
+share/jupyter
+.vscode/

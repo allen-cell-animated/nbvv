@@ -61,10 +61,10 @@ module.exports = [
     entry: "./lib/extension.js",
     output: {
       filename: "extension.js",
-      path: path.resolve(__dirname, "..", "nbvv", "static"),
+      path: path.resolve(__dirname, "../share/jupyter/nbextensions/nbvv"),
       library: {
         type: "amd",
-      }
+      },
     },
   },
   {
@@ -77,11 +77,11 @@ module.exports = [
     entry: "./lib/index.js",
     output: {
       filename: "index.js",
-      path: path.resolve(__dirname, "..", "nbvv", "static"),
+      path: path.resolve(__dirname, "../share/jupyter/nbextensions/nbvv"),
       library: {
         type: "umd",
       },
-      publicPath: "/nbextensions/nbvv/"
+      publicPath: "/nbextensions/nbvv/",
     },
     devtool: "source-map",
     module: {
@@ -112,7 +112,7 @@ module.exports = [
         name: "nbvv",
         type: "umd",
       },
-      publicPath: "https://unpkg.com/nbvv@" + version + "/dist/"
+      publicPath: "https://unpkg.com/nbvv@" + version + "/dist/",
     },
     devtool: "source-map",
     module: {
