@@ -42,10 +42,10 @@ jobs:
         test -d share/jupyter/labextensions/nbvv/static
 
     - name: Validate the nbextension
-      run: jupyter nbextension list 2>&1 | grep "nbvv/extension"
+      run: jupyter nbextension list
 
     - name: Validate the labextension
-      run: jupyter labextension list 2>&1 | grep nbvv
+      run: jupyter labextension list
 
     - name: Python tests
       run: pytest
