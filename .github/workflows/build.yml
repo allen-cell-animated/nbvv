@@ -29,11 +29,9 @@ jobs:
 
     - name: Install the package
       run: |
-        pip install pytest jupyter jupyterlab jupyter-packaging
+        pip install jupyter jupyterlab jupyter-packaging
         pip install .
-    - name: Test build
-      run: |
-        python -m pip install build --user
+
     - name: Test installation files
       run: |
         test -d share/jupyter/nbextensions/nbvv
@@ -44,11 +42,11 @@ jobs:
         test -d share/jupyter/labextensions/nbvv/static
 
     - name: Validate the nbextension
-      run: jupyter nbextension list
+      run: |
+        jupyter nbextension install --py nbvv --sys-prefix
+        jupyter nbextension enable nbvv --py --sys-prefix
+        jupyter nbextension list 2>&1 | grep "nbvv/extension"
 
     - name: Validate the labextension
       run: jupyter labextension list 2>&1 | grep nbvv
-
-    - name: Python tests
-      run: pytest
 
