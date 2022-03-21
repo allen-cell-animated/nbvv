@@ -31,7 +31,9 @@ jobs:
       run: |
         pip install pytest jupyter jupyterlab jupyter-packaging
         pip install .
-
+    - name: Test build
+      run: |
+        python -m pip install build --user
     - name: Test installation files
       run: |
         test -d share/jupyter/nbextensions/nbvv

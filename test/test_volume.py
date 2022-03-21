@@ -20,4 +20,4 @@ def test_volshow():
 
     widget = nbvv.volume.volshow(image)
 
-    numpy.testing.assert_array_equal(widget.image, image)
+    numpy.testing.assert_array_equal(widget.image/255.0, image)
