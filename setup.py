@@ -21,9 +21,6 @@ from jupyter_packaging import (
 here = os.path.dirname(os.path.abspath(__file__))
 
 log.set_verbosity(log.DEBUG)
-# log.info("setup.py entered")
-# log.info("$PATH=%s" % os.environ["PATH"])
-
 
 def skip_if_exists(paths, CommandClass):
     """Skip a command if list of paths exists."""
@@ -122,26 +119,4 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
     ],
-    # package_data={"nbvv.vue": ["*.vue"]},
 )
-
-
-# "data_files": [
-#     (
-#         "share/jupyter/nbextensions/nbvv",
-#         [
-#             "nbvv/static/extension.js",
-#             "nbvv/static/index.js",
-#             "nbvv/static/index.js.map",
-#         ],
-#     )
-#     # commenting this out because it breaks Windows build
-#     # ,
-#     # ('etc/jupyter/nbconfig/notebook.d/' ,['nbvv.json'])
-# ],
-# "cmdclass": {
-#     "build_py": js_prerelease(build_py),
-#     "egg_info": js_prerelease(egg_info),
-#     "sdist": js_prerelease(sdist, strict=True),
-#     "jsdeps": NPM,
-# },
