@@ -33,12 +33,12 @@ jobs:
 
     - name: Test installation files
       run: |
-        test -d $CONDA_PREFIX/share/jupyter/nbextensions/nbvv
-        test -f $CONDA_PREFIX/share/jupyter/nbextensions/nbvv/extension.js
-        test -f $CONDA_PREFIX/share/jupyter/nbextensions/nbvv/index.js
-        test -d $CONDA_PREFIX/share/jupyter/labextensions/nbvv
-        test -f $CONDA_PREFIX/share/jupyter/labextensions/nbvv/package.json
-        test -d $CONDA_PREFIX/share/jupyter/labextensions/nbvv/static
+        test -d share/jupyter/nbextensions/nbvv
+        test -f share/jupyter/nbextensions/nbvv/extension.js
+        test -f share/jupyter/nbextensions/nbvv/index.js
+        test -d share/jupyter/labextensions/nbvv
+        test -f share/jupyter/labextensions/nbvv/package.json
+        test -d share/jupyter/labextensions/nbvv/static
 
     - name: Validate the nbextension
       run: jupyter nbextension list 2>&1 | grep "nbvv/extension"
@@ -47,5 +47,5 @@ jobs:
       run: jupyter labextension list 2>&1 | grep nbvv
 
     - name: Python tests
-      run: pytest nbvv
+      run: pytest
 
