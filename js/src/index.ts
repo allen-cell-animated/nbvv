@@ -43,15 +43,6 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
           rawData: volume,
           rawDims: dimensions,
           appHeight: "400px",
-          defaultSurfacesOn: [],
-          defaultVolumesOn: [0],
-          initialChannelAcc: {
-            Channels: [],
-          },
-          keyList: ["Channels"],
-          groupToChannelNameMap: {
-            Channels: dimensions.channel_names,
-          },
           renderConfig: {
             alphaMask: true,
             autoRotateButton: true,
@@ -64,6 +55,16 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
             levelsSliders: true,
             saveSurfaceButtons: true,
             viewModeRadioButtons: true,
+          },
+          viewerChannelSettings: {
+            groups: [
+              {
+                name: "Channels",
+                channels: dimensions.channel_names.map((name, index) => {
+                  return { match: name, enabled: index < 3 };
+                }),
+              },
+            ],
           },
         },
         null
