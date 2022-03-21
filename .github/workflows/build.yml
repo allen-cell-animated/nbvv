@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: '*'
+
+env:
+  PIP_DISABLE_PIP_VERSION_CHECK: 1
+
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.10"
+
+    - name: Install the package
+      run: |
+        pip install .
+
+    - name: Test installation files
+      run: |
+        test -d $CONDA_PREFIX/share/jupyter/nbextensions/nbvv
+        test -f $CONDA_PREFIX/share/jupyter/nbextensions/nbvv/extension.js
+        test -f $CONDA_PREFIX/share/jupyter/nbextensions/nbvv/index.js
+        test -d $CONDA_PREFIX/share/jupyter/labextensions/nbvv
+        test -f $CONDA_PREFIX/share/jupyter/labextensions/nbvv/package.json
+        test -d $CONDA_PREFIX/share/jupyter/labextensions/nbvv/static
+
+    - name: Validate the nbextension
+      run: jupyter nbextension list 2>&1 | grep "nbvv/extension"
+
+    - name: Validate the labextension
+      run: jupyter labextension list 2>&1 | grep nbvv
+
+    - name: Python tests
+      run: pytest nbvv
+

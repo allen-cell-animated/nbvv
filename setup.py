@@ -99,6 +99,9 @@ setup(
         "ipydatawidgets>=4.2.0",
         "scipy>=1.0.0",
         "scikit-image>=0.13.0",
+        "jupyter",
+        "jupyterlab",
+        "jupyter-packaging"
     ],
     license="MIT",
     packages=find_packages(),
