@@ -29,6 +29,7 @@ jobs:
 
     - name: Install the package
       run: |
+        pip install jupyter jupyterlab jupyter-packaging
         pip install .
 
     - name: Test installation files
