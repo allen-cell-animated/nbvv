@@ -4,7 +4,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "antd/dist/antd.css";
-import "./style.less";
+// TODO: this starts as .less and needs to be converted to .css in tsc step
+import "./style.css";
 
 var VolumeWidgetView = widgets.DOMWidgetView.extend({
   initialize: function () {
@@ -42,15 +43,6 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
           rawData: volume,
           rawDims: dimensions,
           appHeight: "400px",
-          defaultSurfacesOn: [],
-          defaultVolumesOn: [0],
-          initialChannelAcc: {
-            Channels: [],
-          },
-          keyList: ["Channels"],
-          groupToChannelNameMap: {
-            Channels: dimensions.channel_names,
-          },
           renderConfig: {
             alphaMask: true,
             autoRotateButton: true,
@@ -63,6 +55,16 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
             levelsSliders: true,
             saveSurfaceButtons: true,
             viewModeRadioButtons: true,
+          },
+          viewerChannelSettings: {
+            groups: [
+              {
+                name: "Channels",
+                channels: dimensions.channel_names.map((name, index) => {
+                  return { match: name, enabled: index < 3 };
+                }),
+              },
+            ],
           },
         },
         null

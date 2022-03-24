@@ -20,20 +20,26 @@ nvm install 14.17.0
 nvm use 14.17.0
 ```
 
-Make sure you have jupyter notebook and nbextensions installed (not necessary in every environment):
+Make sure you have jupyterlab, jupyter notebook and nbextensions installed (not necessary in every environment):
 ```
 pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user
 ```
 
-Install nbvv in one of two ways:
-* Option 1: Run `build.sh` from this repo
-* Option 2: Pip install
-    1. `pip install .` or `pip install nbvv`
-    2. Then enable the extension in jupyter:
-        ```
-        jupyter nbextension install --py nbvv --sys-prefix
-        jupyter nbextension enable nbvv --py --sys-prefix
-        ```
+Install nbvv in one of these ways:
+* Option 1: Install from PyPi
+    ```
+    pip install nbvv
+    jupyter nbextension install --py nbvv --sys-prefix
+    jupyter nbextension enable nbvv --py --sys-prefix
+    ```
+* Option 2: Run `build.sh` from this repo
+* Option 3: Step-by-step, from source:
+    ```
+    pip install -e .
+    jupyter nbextension install --py --overwrite --symlink --sys-prefix nbvv
+    jupyter nbextension enable --py --sys-prefix nbvv
+    jupyter labextension develop . --overwrite
+    ```
 
 ## Documentation
 
