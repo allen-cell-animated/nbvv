@@ -62,7 +62,7 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@aics/web-3d-viewer": "^2.0.2",
+    "@aics/web-3d-viewer": "^2.1.0",
     "@jupyter-widgets/base": "^4.1.0",
     "antd": "^3.20.7",
     "chokidar": "^3.4.1",
