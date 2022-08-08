@@ -22,6 +22,7 @@ here = os.path.dirname(os.path.abspath(__file__))
 
 log.set_verbosity(log.DEBUG)
 
+
 def skip_if_exists(paths, CommandClass):
     """Skip a command if list of paths exists."""
 
@@ -91,14 +92,14 @@ setup(
     include_package_data=True,
     cmdclass=cmdclass,
     install_requires=[
-        "ipywidgets>=7.6.4",
+        "ipydatawidgets>=4.3.1",
+        "ipywidgets>=7.7.1",
+        "jupyter>=1.0.0",
+        "jupyterlab>=3.4.4",
+        "jupyter-packaging>=0.12.2",
         "numpy>=1.14.3",
-        "ipydatawidgets>=4.2.0",
-        "scipy>=1.0.0",
         "scikit-image>=0.13.0",
-        "jupyter",
-        "jupyterlab",
-        "jupyter-packaging"
+        "scipy>=1.0.0",
     ],
     license="MIT",
     packages=find_packages(),
