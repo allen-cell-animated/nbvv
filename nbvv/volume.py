@@ -1,9 +1,10 @@
 import ipydatawidgets
 import ipywidgets
-from ipywidgets import Layout, interact, interactive, fixed, interact_manual
 import nbvv.img_prep
 import numpy
 import traitlets
+
+semver_range_frontend = "~" + nbvv._version.__version_semantic__
 
 
 @ipywidgets.register
@@ -12,7 +13,7 @@ class VolumeWidget(ipywidgets.DOMWidget):
 
     _view_module = traitlets.Unicode("nbvv").tag(sync=True)
 
-    _view_module_version = traitlets.Unicode("1.0.0").tag(sync=True)
+    _view_module_version = traitlets.Unicode(semver_range_frontend).tag(sync=True)
 
     image = ipydatawidgets.NDArray(numpy.zeros(0, dtype=numpy.uint8)).tag(
         sync=True, **ipydatawidgets.array_serialization

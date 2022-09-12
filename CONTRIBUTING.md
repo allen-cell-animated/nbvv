@@ -19,8 +19,10 @@ you'd like to see documented.
 
 To release a new version of nbvv on PyPI:
 
-Update _version.py (set release version, remove 'dev') 
-git add the _version.py file and git commit 
+Update nbvv/_version.py (set release version, remove 'dev') 
+And update js/package.json to have the same version number.
+
+git add the updated files and git commit 
 `python setup.py sdist upload`
 `python setup.py bdist_wheel upload`
 `git tag -a X.X.X -m 'comment'`
