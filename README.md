@@ -51,6 +51,10 @@ try the demo notebook:
 ```
 jupyter notebook examples/demo.ipynb
 ```
+or likewise with jupyterlab:
+```
+jupyter lab examples/demo.ipynb
+```
 
 In a Jupyter notebook, load or create volume data in a numpy array.
 The data should be of shape (Z,Y,X) or (C,Z,Y,X) for multi-channel data.

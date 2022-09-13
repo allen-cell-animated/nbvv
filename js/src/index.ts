@@ -7,19 +7,15 @@ import "antd/dist/antd.css";
 // TODO: this starts as .less and needs to be converted to .css in tsc step
 import "./style.css";
 
-var VolumeWidgetView = widgets.DOMWidgetView.extend({
-  initialize: function () {
+export class VolumeWidgetView extends widgets.DOMWidgetView {
+  initialize() {
     const view = this;
 
     const metadata = this.model.get("metadata");
-
     const volume = this.model.get("image");
-
     const size = this.model.get("size");
-
     const density = this.model.get("density");
     const brightness = this.model.get("brightness");
-
     const dimensions = this.model.get("dimensions");
 
     // console.log("C = " + volume.shape[0]);
@@ -42,7 +38,21 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
         {
           rawData: volume,
           rawDims: dimensions,
+          viewerChannelSettings: {
+            groups: [
+              {
+                name: "Channels",
+                channels: dimensions.channel_names.map((name, index) => {
+                  return { match: name, enabled: index < 3 };
+                }),
+              },
+            ],
+          },
+          maskChannelName: "",
           appHeight: "400px",
+          cellId: "",
+          cellPath: "",
+          fovPath: "",
           renderConfig: {
             alphaMask: true,
             autoRotateButton: true,
@@ -55,18 +65,33 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
             levelsSliders: true,
             saveSurfaceButtons: true,
             viewModeRadioButtons: true,
+
+            resetCameraButton: true,
+            showAxesButton: true,
+            showBoundingBoxButton: true,
           },
-          viewerChannelSettings: {
-            groups: [
-              {
-                name: "Channels",
-                channels: dimensions.channel_names.map((name, index) => {
-                  return { match: name, enabled: index < 3 };
-                }),
-              },
-            ],
+          viewerConfig: {
+            showAxes: true,
+            showBoundingBox: true,
+            boundingBoxColor: [1, 1, 1],
+            backgroundColor: [0, 0, 0],
+            autorotate: false,
+            view: "3D",
+            mode: "3D",
+            maskAlpha: 0.0,
+            brightness: 75.0,
+            density: 10.0,
+            levels: [0, 128, 255],
           },
+          baseUrl: "",
+          nextImgPath: "",
+          prevImgPath: "",
+          cellDownloadHref: "",
+          fovDownloadHref: "",
+          preLoad: false,
+          canvasMargin: "",
         },
+
         null
       )
     );
@@ -80,7 +105,5 @@ var VolumeWidgetView = widgets.DOMWidgetView.extend({
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
     }, 200);
-  },
-});
-
-export { VolumeWidgetView };
+  }
+}
