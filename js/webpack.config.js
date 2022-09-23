@@ -23,9 +23,6 @@ const rules = [
         loader: "css-loader",
         options: {
           sourceMap: true,
-          modules: {
-            localIdentName: "[name]__[local]___[hash:base64:5]",
-          },
         },
       },
     ],
@@ -38,9 +35,6 @@ const rules = [
         loader: "css-loader",
         options: {
           sourceMap: true,
-          modules: {
-            localIdentName: "[name]__[local]___[hash:base64:5]",
-          },
         },
       },
       "resolve-url-loader",
@@ -62,9 +56,6 @@ const rules = [
         loader: "css-loader",
         options: {
           importLoaders: 1,
-          modules: {
-            localIdentName: "[name]__[local]___[hash:base64:5]",
-          },
         },
       },
       {
