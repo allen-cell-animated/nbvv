@@ -17,7 +17,18 @@ const rules = [
   },
   {
     test: /\.css$/,
-    use: ["style-loader", "css-loader"],
+    use: [
+      "style-loader",
+      {
+        loader: "css-loader",
+        options: {
+          sourceMap: true,
+          modules: {
+            localIdentName: "[name]__[local]___[hash:base64:5]",
+          },
+        },
+      },
+    ],
   },
   {
     test: /\.scss$/,
@@ -27,6 +38,9 @@ const rules = [
         loader: "css-loader",
         options: {
           sourceMap: true,
+          modules: {
+            localIdentName: "[name]__[local]___[hash:base64:5]",
+          },
         },
       },
       "resolve-url-loader",
@@ -48,6 +62,9 @@ const rules = [
         loader: "css-loader",
         options: {
           importLoaders: 1,
+          modules: {
+            localIdentName: "[name]__[local]___[hash:base64:5]",
+          },
         },
       },
       {
