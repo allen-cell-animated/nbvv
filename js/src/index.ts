@@ -3,9 +3,9 @@ import { ImageViewerApp } from "@aics/web-3d-viewer";
 import React from "react";
 import ReactDOM from "react-dom";
 
-import "antd/dist/antd.css";
+import "../node_modules/antd/dist/antd.less";
 // TODO: this starts as .less and needs to be converted to .css in tsc step
-import "./style.css";
+import "../src/style.less";
 
 export class VolumeWidgetView extends widgets.DOMWidgetView {
   initialize() {

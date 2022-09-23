@@ -1,9 +1,15 @@
-var path = require("path");
-var version = require("./package.json").version;
+const path = require("path");
+const fs = require("fs");
+const version = require("./package.json").version;
+const lessToJs = require("less-vars-to-js");
+
+const themeVariables = lessToJs(
+  fs.readFileSync(path.join(__dirname, "src/styles/ant-vars.less"), "utf8")
+);
 
 // Custom webpack rules are generally the same for all webpack bundles, hence
 // stored in a separate local variable.
-var rules = [
+const rules = [
   {
     test: /\.(ts|tsx|js|jsx)$/,
     exclude: /node_modules/,
@@ -35,13 +41,22 @@ var rules = [
   },
   {
     test: /\.less$/,
+    include: [path.resolve(__dirname, "node_modules")],
     use: [
-      "style-loader",
-      "css-loader",
+      {
+        loader: "css-loader",
+        options: {
+          importLoaders: 1,
+        },
+      },
       {
         loader: "less-loader",
         options: {
-          lessOptions: { javascriptEnabled: true },
+          lessOptions: {
+            javascriptEnabled: true,
+            modifyVars: themeVariables,
+            math: "always",
+          },
         },
       },
     ],
@@ -66,6 +81,7 @@ module.exports = [
         type: "amd",
       },
     },
+    module: { rules },
   },
   {
     // Bundle for the notebook containing the custom widget views and models
