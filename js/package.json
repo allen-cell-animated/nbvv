@@ -16,12 +16,11 @@
     "jupyterlab-extension"
   ],
   "files": [
-    "lib/**/*.js",
-    "dist/"
+    "lib/**/*.js"
   ],
   "scripts": {
-    "clean": "rimraf dist/",
-    "build": "npm run build:lib && npm run build:labextension && webpack --mode=production",
+    "clean": "rimraf lib/",
+    "build": "npm run build:lib && webpack --mode=production && npm run build:labextension",
     "build:lib": "tsc --project .",
     "build:css": "lessc --js --include-path=./node_modules src/style.less lib/style.css",
     "build:labextension": "jupyter labextension build .",
@@ -41,7 +40,8 @@
         "bundled": false,
         "singleton": true
       }
-    }
+    },
+    "webpackConfig": "./webpack.prebuilt.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -52,7 +52,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^6.2.0",
     "less": "^4.1.1",
-    "less-loader": "^10.0.1",
+    "less-loader": "^11.0.0",
     "less-vars-to-js": "^1.3.0",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",

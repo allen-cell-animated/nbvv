@@ -41,8 +41,9 @@ const rules = [
   },
   {
     test: /\.less$/,
-    include: [path.resolve(__dirname, "node_modules")],
+    //include: [path.resolve(__dirname, "node_modules")],
     use: [
+      "style-loader",
       {
         loader: "css-loader",
         options: {
@@ -81,7 +82,7 @@ module.exports = [
         type: "amd",
       },
     },
-    module: { rules },
+    module: { rules: rules },
   },
   {
     // Bundle for the notebook containing the custom widget views and models
