@@ -1,11 +1,5 @@
 const path = require("path");
-const fs = require("fs");
 const version = require("./package.json").version;
-const lessToJs = require("less-vars-to-js");
-
-const themeVariables = lessToJs(
-  fs.readFileSync(path.join(__dirname, "src/styles/ant-vars.less"), "utf8")
-);
 
 // Custom webpack rules are generally the same for all webpack bundles, hence
 // stored in a separate local variable.
@@ -42,14 +36,12 @@ const rules = [
         loader: "sass-loader",
         options: {
           sourceMap: true,
-          //          includePaths: [`${__dirname}/src/aics-image-viewer/assets/styles`]
         },
       },
     ],
   },
   {
     test: /\.less$/,
-    //include: [path.resolve(__dirname, "node_modules")],
     use: [
       "style-loader",
       {
@@ -63,7 +55,6 @@ const rules = [
         options: {
           lessOptions: {
             javascriptEnabled: true,
-            modifyVars: themeVariables,
             math: "always",
           },
         },
