@@ -46,7 +46,7 @@ def volshow(
     image : numpy.ndarray
         The image volume to display. Must be 4D with dimensions in the order CZYX
     spacing : tuple of float
-        The spacing between pixels in each dimension XYZ.
+        The spacing between pixels in each spatial dimension X, Y, Z.
     density : float
         The initial density setting for the viewer
     brightness : float
@@ -60,12 +60,13 @@ def volshow(
         return "Image must be 3 or 4 dimensional"
     if len(image.shape) < 3:
         return "Image must be 3 or 4 dimensional"
-    # add a channel dimension if needed
-    if len(image.shape) == 3:
-        image = numpy.expand_dims(image, axis=0)
 
     if not isinstance(channel_names, list):
         return "channel_names must be a list of strings"
+
+    # add a channel dimension if needed
+    if len(image.shape) == 3:
+        image = numpy.expand_dims(image, axis=0)
 
     volume_widget = VolumeWidget()
 
