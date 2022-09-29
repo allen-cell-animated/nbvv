@@ -1,5 +1,5 @@
-// Custom webpack rules are generally the same for all webpack bundles, hence
-// stored in a separate local variable.
+// "jupyter labextension build" will run webpack on its own and use the contents of this file as additional rules.  
+// We use less-loader here to get our css injected in properly.
 const rules = [
   {
     test: /\.less$/,
