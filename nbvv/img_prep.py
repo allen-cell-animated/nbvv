@@ -85,7 +85,7 @@ def atlas_dimensions(
     }
 
     if channel_names is not None:
-        dims["channel_names"] = channel_names
+        dims["channel_names"] = [str(i) for i in channel_names]
     else:
         dims["channel_names"] = ["CH_" + str(i) for i in range(aics_image.shape[0])]
 

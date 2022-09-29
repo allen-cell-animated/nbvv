@@ -3,6 +3,7 @@ import ipywidgets
 import nbvv.img_prep
 import numpy
 import traitlets
+from typing import List, Tuple
 
 semver_range_frontend = "~" + nbvv._version.__version_semantic__
 
@@ -31,13 +32,38 @@ class VolumeWidget(ipywidgets.DOMWidget):
 
 # expect CZYX
 def volshow(
-    image, spacing=(1.0, 1.0, 1.0), density=0.1, brightness=1.0, channel_names=None
+    image: numpy.ndarray,
+    spacing: Tuple[float, float, float] = (1.0, 1.0, 1.0),
+    density: float = 0.1,
+    brightness: float = 1.0,
+    channel_names: List[str] = None,
 ):
+    """
+    Display a 4D image volume in a Jupyter notebook.
+
+    Parameters
+    ----------
+    image : numpy.ndarray
+        The image volume to display. Must be 4D with dimensions in the order CZYX
+    spacing : tuple of float
+        The spacing between pixels in each spatial dimension X, Y, Z.
+    density : float
+        The initial density setting for the viewer
+    brightness : float
+        The initial brightness setting for the viewer
+    channel_names : list of str
+        The names of the channels in the image volume. If not provided, the channel names will be simple integers
+    """
+
     # assume CZYX if 4d and ZYX if 3d.
     if len(image.shape) > 4:
         return "Image must be 3 or 4 dimensional"
     if len(image.shape) < 3:
         return "Image must be 3 or 4 dimensional"
+
+    if not isinstance(channel_names, list):
+        return "channel_names must be a list of strings"
+
     # add a channel dimension if needed
     if len(image.shape) == 3:
         image = numpy.expand_dims(image, axis=0)
