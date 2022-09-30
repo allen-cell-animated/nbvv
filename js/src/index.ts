@@ -3,8 +3,8 @@ import { ImageViewerApp } from "@aics/web-3d-viewer";
 import React from "react";
 import ReactDOM from "react-dom";
 
-// Imported after tsc transpile - links out of lib, back into src
-import "../src/style.less";
+// Styles are copied into lib, then compiled by webpack less-loader
+import "./style.less";
 
 export class VolumeWidgetView extends widgets.DOMWidgetView {
   initialize() {

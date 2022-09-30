@@ -1,26 +1,25 @@
 {
-    "compilerOptions": {
-      "esModuleInterop": true,
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "noEmitOnError": true,
-      "noUnusedLocals": false,
-      "outDir": "lib",
-      "preserveWatchOutput": true,
-      "rootDir": "src",
-      "inlineSourceMap": true,
-      "skipLibCheck": true,
-      "strictNullChecks": false,
-      "target": "es2017",
-      "types": ["node"],
-      "allowJs": true,
-    },
-    "include": [
-      "src/**/*"
-    ],
-    "exclude": [
-      "node_modules",
-      "**/*.spec.ts"
-    ]
-
-  }
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noUnusedLocals": false,
+    "outDir": "lib",
+    "preserveWatchOutput": true,
+    "rootDir": "src",
+    "inlineSourceMap": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "target": "es2017",
+    "types": ["node"],
+    "allowJs": true,
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
