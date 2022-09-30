@@ -19,7 +19,7 @@
     "lib/**/*.js"
   ],
   "scripts": {
-    "clean": "rimraf lib/",
+    "clean": "rimraf dist/",
     "build": "npm run build:lib && npm run build:css && npm run build:labextension && webpack --mode=production",
     "build:lib": "tsc --project .",
     "build:css": "copyfiles -u 1 src/style.less src/styles/* lib",
