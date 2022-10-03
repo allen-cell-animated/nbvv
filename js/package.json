@@ -16,14 +16,13 @@
     "jupyterlab-extension"
   ],
   "files": [
-    "lib/**/*.js",
-    "dist/"
+    "lib/**/*.js"
   ],
   "scripts": {
     "clean": "rimraf dist/",
     "build": "npm run build:lib && npm run build:css && npm run build:labextension && webpack --mode=production",
     "build:lib": "tsc --project .",
-    "build:css": "lessc --js --include-path=./node_modules src/style.less lib/style.css",
+    "build:css": "copyfiles -u 1 src/style.less src/styles/* lib",
     "build:labextension": "jupyter labextension build .",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -41,7 +40,8 @@
         "bundled": false,
         "singleton": true
       }
-    }
+    },
+    "webpackConfig": "./webpack.prebuilt.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -50,9 +50,10 @@
     "@babel/preset-typescript": "^7.15.0",
     "@jupyterlab/builder": "^3.4.1",
     "babel-loader": "^8.1.0",
+    "copyfiles": "^2.4.1",
     "css-loader": "^6.2.0",
     "less": "^4.1.1",
-    "less-loader": "^10.0.1",
+    "less-loader": "^11.0.0",
     "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -68,7 +69,7 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@aics/web-3d-viewer": "^2.2.0",
+    "@aics/web-3d-viewer": "^2.3.1",
     "@jupyter-widgets/base": "^6.0.1",
     "antd": "^3.20.7",
     "chokidar": "^3.4.1",

@@ -1,9 +1,9 @@
-var path = require("path");
-var version = require("./package.json").version;
+const path = require("path");
+const version = require("./package.json").version;
 
 // Custom webpack rules are generally the same for all webpack bundles, hence
 // stored in a separate local variable.
-var rules = [
+const rules = [
   {
     test: /\.(ts|tsx|js|jsx)$/,
     exclude: /node_modules/,
@@ -11,7 +11,15 @@ var rules = [
   },
   {
     test: /\.css$/,
-    use: ["style-loader", "css-loader"],
+    use: [
+      "style-loader",
+      {
+        loader: "css-loader",
+        options: {
+          sourceMap: true,
+        },
+      },
+    ],
   },
   {
     test: /\.scss$/,
@@ -28,7 +36,6 @@ var rules = [
         loader: "sass-loader",
         options: {
           sourceMap: true,
-          //          includePaths: [`${__dirname}/src/aics-image-viewer/assets/styles`]
         },
       },
     ],
@@ -37,11 +44,19 @@ var rules = [
     test: /\.less$/,
     use: [
       "style-loader",
-      "css-loader",
+      {
+        loader: "css-loader",
+        options: {
+          importLoaders: 1,
+        },
+      },
       {
         loader: "less-loader",
         options: {
-          lessOptions: { javascriptEnabled: true },
+          lessOptions: {
+            javascriptEnabled: true,
+            math: "always",
+          },
         },
       },
     ],
@@ -66,6 +81,7 @@ module.exports = [
         type: "amd",
       },
     },
+    module: { rules: rules },
   },
   {
     // Bundle for the notebook containing the custom widget views and models
