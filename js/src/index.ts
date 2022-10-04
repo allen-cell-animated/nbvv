@@ -72,7 +72,7 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
           viewerConfig: {
             showAxes: true,
             showBoundingBox: true,
-            boundingBoxColor: [1, 1, 1],
+            boundingBoxColor: [255, 255, 255],
             backgroundColor: [0, 0, 0],
             autorotate: false,
             view: "3D",
