@@ -38,12 +38,14 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
           rawData: volume,
           rawDims: dimensions,
           viewerChannelSettings: {
+            maskChannelName: "",
             groups: [
               {
                 name: "Channels",
-                channels: dimensions.channel_names.map((name, index) => {
-                  return { match: name, enabled: index < 3 };
-                }),
+                channels: dimensions.channel_names.map((name: string, index: number) => ({
+                  match: name,
+                  enabled: index < 3,
+                })),
               },
             ],
           },
