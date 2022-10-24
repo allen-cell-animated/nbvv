@@ -38,7 +38,6 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
           rawData: volume,
           rawDims: dimensions,
           viewerChannelSettings: {
-            maskChannelName: "",
             groups: [
               {
                 name: "Channels",
@@ -49,7 +48,6 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
               },
             ],
           },
-          maskChannelName: "",
           appHeight: "400px",
           cellId: "",
           cellPath: "",

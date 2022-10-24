@@ -73,7 +73,7 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@aics/web-3d-viewer": "^2.3.3-dev.0",
+    "@aics/web-3d-viewer": "^2.3.3",
     "@jupyter-widgets/base": "^6.0.1",
     "antd": "^3.20.7",
     "chokidar": "^3.4.1",
