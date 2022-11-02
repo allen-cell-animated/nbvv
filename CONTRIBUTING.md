@@ -17,27 +17,28 @@ project documentation. If you cannot find the documentation you're
 looking for, please file a GitHub issue with details of what
 you'd like to see documented.
 
-To release a new version of nbvv on PyPI:
+### To release a new version of nbvv on PyPI:
 
-Update nbvv/_version.py (set release version, remove 'dev')
-And update js/package.json to have the same version number.
-Then npm install to update js/package-lock.json with current dependencies and version.
+- Update nbvv/_version.py
+- And update js/package.json to have the same version number.
+- Then npm install to update js/package-lock.json with current dependencies and version.
+- git add the updated files and git commit
+- `git tag -a vX.X.X -m 'comment'`
+- `git push`
+- `git push --tags`
 
-git add the updated files and git commit
-`python setup.py sdist upload`
-`python setup.py bdist_wheel upload`
-`git tag -a X.X.X -m 'comment'`
-Update _version.py (add 'dev' and increment minor)
-git add and git commit
-`git push`
-`git push --tags`
+GitHub Actions will take care of publishing the tagged commit to PyPI.
 
-To release a new version of nbvv on NPM:
+You may alternatively use `npm version` to increment `version` in package.json
+and package-lock.json and add a tagged commit all in one step. If so, update
+nbvv/_version.py first and **ensure that the version numbers in _version.py
+and package.json match** before pushing your changes.
 
-clean out the `dist` and `node_modules` directories:
-`git clean -fdx`
-`npm install`
-`npm publish`
+### To release a new version of nbvv on NPM:
+
+- clean out the `dist` and `node_modules` directories: `git clean -fdx`
+- `npm install`
+- `npm publish`
 
 ## How to Contribute
 

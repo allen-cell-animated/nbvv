@@ -17,6 +17,8 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
     const brightness = this.model.get("brightness");
     const dimensions = this.model.get("dimensions");
 
+    const height = this.model.get("layout")?.get("height") || "500px";
+
     // console.log("C = " + volume.shape[0]);
     // console.log("Z = " + volume.shape[1]);
     // console.log("Y = " + volume.shape[2]);
@@ -48,7 +50,7 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
               },
             ],
           },
-          appHeight: "400px",
+          appHeight: height,
           cellId: "",
           cellPath: "",
           fovPath: "",

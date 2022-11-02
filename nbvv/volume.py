@@ -37,6 +37,7 @@ def volshow(
     density: float = 0.1,
     brightness: float = 1.0,
     channel_names: List[str] = None,
+    viewer_height: int = 500,
 ):
     """
     Display a 4D image volume in a Jupyter notebook.
@@ -53,6 +54,8 @@ def volshow(
         The initial brightness setting for the viewer
     channel_names : list of str
         The names of the channels in the image volume. If not provided, the channel names will be simple integers
+    viewer_height : int
+        The height of the viewer panel in pixels
     """
 
     # assume CZYX if 4d and ZYX if 3d.
@@ -68,7 +71,7 @@ def volshow(
     if len(image.shape) == 3:
         image = numpy.expand_dims(image, axis=0)
 
-    volume_widget = VolumeWidget()
+    volume_widget = VolumeWidget(layout=ipywidgets.Layout(height=f"{viewer_height}px"))
 
     dims_object = nbvv.img_prep.atlas_dimensions(
         image, physical_pixel_size=spacing, channel_names=channel_names
