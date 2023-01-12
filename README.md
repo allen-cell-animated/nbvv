@@ -71,7 +71,7 @@ import nbvv
 nbvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0), channel_names=my_list_of_channel_name_strings)
 ```
 
-`volshow` also provides an optional `viewer_height` parameter if you want to make the viewer larger in the notebook.
+`volshow` also provides an optional `viewer_height` parameter if you want to make the viewer larger in the notebook. Default is 500 and values should be specified in CSS pixels.
 
 ## Development
 
