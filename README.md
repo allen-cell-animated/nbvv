@@ -15,31 +15,34 @@ Envisioned user group is anyone who wants a robust and quick way to interactivel
 To install from source:
 You will need to make sure nodejs and npm are installed on your system.
 One way to do this is using `nvm`, for example:
+
 ```
 nvm install 14.17.0
 nvm use 14.17.0
 ```
 
 Make sure you have jupyterlab, jupyter notebook and nbextensions installed (not necessary in every environment):
+
 ```
 pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user
 ```
 
 Install nbvv in one of these ways:
-* Option 1: Install from PyPi
-    ```
-    pip install nbvv
-    jupyter nbextension install --py nbvv --sys-prefix
-    jupyter nbextension enable nbvv --py --sys-prefix
-    ```
-* Option 2: Run `build.sh` from this repo
-* Option 3: Step-by-step, from source:
-    ```
-    pip install -e .
-    jupyter nbextension install --py --overwrite --symlink --sys-prefix nbvv
-    jupyter nbextension enable --py --sys-prefix nbvv
-    jupyter labextension develop . --overwrite
-    ```
+
+- Option 1: Install from PyPi
+  ```
+  pip install nbvv
+  jupyter nbextension install --py nbvv --sys-prefix
+  jupyter nbextension enable nbvv --py --sys-prefix
+  ```
+- Option 2: Run `build.sh` from this repo
+- Option 3: Step-by-step, from source:
+  ```
+  pip install -e .
+  jupyter nbextension install --py --overwrite --symlink --sys-prefix nbvv
+  jupyter nbextension enable --py --sys-prefix nbvv
+  jupyter labextension develop . --overwrite
+  ```
 
 ## Documentation
 
@@ -48,10 +51,13 @@ Extended documentation is not available yet. When completed it will be made avai
 ## Quick Start
 
 try the demo notebook:
+
 ```
 jupyter notebook examples/demo.ipynb
 ```
+
 or likewise with jupyterlab:
+
 ```
 jupyter lab examples/demo.ipynb
 ```
@@ -59,6 +65,7 @@ jupyter lab examples/demo.ipynb
 In a Jupyter notebook, load or create volume data in a numpy array.
 The data should be of shape (Z,Y,X) or (C,Z,Y,X) for multi-channel data.
 Display the numpy data using
+
 ```
 import nbvv
 nbvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0), channel_names=my_list_of_channel_name_strings)
