@@ -1,14 +1,8 @@
 from __future__ import print_function
 from setuptools import setup, find_packages, Command
-from setuptools.command.sdist import sdist
-from setuptools.command.build_py import build_py
-from setuptools.command.egg_info import egg_info
-from subprocess import check_call
 import os
 from os.path import join as pjoin
 from pathlib import Path
-import sys
-import platform
 from distutils import log
 from jupyter_packaging import (
     create_cmdclass,
@@ -72,7 +66,8 @@ data_files_spec = [
 ]
 
 js_command = combine_commands(
-    install_npm(js_dir, build_cmd="build"), ensure_targets(jstargets),
+    install_npm(js_dir, build_cmd="build"),
+    ensure_targets(jstargets),
 )
 
 cmdclass = create_cmdclass("jsdeps", data_files_spec=data_files_spec)
@@ -93,9 +88,9 @@ setup(
     cmdclass=cmdclass,
     install_requires=[
         "ipydatawidgets>=4.3.2",
-        "ipywidgets>=8.0.0",
+        "ipywidgets>=8.0.4",
         "jupyter>=1.0.0",
-        "jupyterlab>=3.4.6",
+        "jupyterlab>=3.5.2",
         "jupyter-packaging>=0.12.3",
         "numpy>=1.14.3",
         "scikit-image>=0.13.0",

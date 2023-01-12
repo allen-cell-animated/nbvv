@@ -19,7 +19,7 @@ you'd like to see documented.
 
 ### To release a new version of nbvv on PyPI:
 
-- Update nbvv/_version.py
+- Update nbvv/\_version.py
 - And update js/package.json to have the same version number.
 - Then npm install to update js/package-lock.json with current dependencies and version.
 - git add the updated files and git commit
@@ -31,7 +31,7 @@ GitHub Actions will take care of publishing the tagged commit to PyPI.
 
 You may alternatively use `npm version` to increment `version` in package.json
 and package-lock.json and add a tagged commit all in one step. If so, update
-nbvv/_version.py first and **ensure that the version numbers in _version.py
+nbvv/\_version.py first and **ensure that the version numbers in \_version.py
 and package.json match** before pushing your changes.
 
 ### To release a new version of nbvv on NPM:
@@ -51,6 +51,20 @@ Typical steps to contribute:
 3. Ensure that your changes are working, pass any linting and tests in the project. Add tests and documentation as needed.
 
 4. Submit a pull request to merge your fork's branch into this repository, via GitHub.
+
+Here is a recipe to create a conda environment geared for jupyterlab builds:
+
+```
+conda activate base
+conda env remove -n nbvv
+conda create -n nbvv python=3.10
+conda activate nbvv
+conda install black flake8
+conda install jupyterlab
+conda install scikit-image scipy numpy jupyter
+conda install ipywidgets jupyter-packaging
+conda install -c conda-forge aicsimageio
+```
 
 ## Questions or Thoughts?
 

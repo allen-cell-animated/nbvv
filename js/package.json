@@ -51,7 +51,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
-    "@jupyterlab/builder": "^3.4.1",
+    "@jupyterlab/builder": "^3.5.2",
     "babel-loader": "^8.1.0",
     "copyfiles": "^2.4.1",
     "css-loader": "^6.2.0",
@@ -73,11 +73,8 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@aics/web-3d-viewer": "^2.3.3",
-    "@jupyter-widgets/base": "^6.0.1",
-    "antd": "^3.20.7",
-    "chokidar": "^3.4.1",
-    "lodash": "^4.17.4",
-    "sass": "^1.26.10"
+    "@aics/web-3d-viewer": "^2.5.0",
+    "@jupyter-widgets/base": "^6.0.2",
+    "antd": "^3.20.7"
   }
 }

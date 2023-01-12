@@ -43,10 +43,12 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
             groups: [
               {
                 name: "Channels",
-                channels: dimensions.channel_names.map((name: string, index: number) => ({
-                  match: name,
-                  enabled: index < 3,
-                })),
+                channels: dimensions.channel_names.map(
+                  (name: string, index: number) => ({
+                    match: name,
+                    enabled: index < 3,
+                  })
+                ),
               },
             ],
           },
@@ -63,6 +65,7 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
             colorPresetsDropdown: true,
             densitySlider: true,
             fovCellSwitchControls: false,
+            interpolationControl: true,
             levelsSliders: true,
             saveSurfaceButtons: true,
             viewModeRadioButtons: true,
