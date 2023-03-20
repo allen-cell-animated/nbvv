@@ -32,7 +32,7 @@ jobs:
           echo "VIRTUAL ENV:" $VIRTUAL_ENV
       - name: Install the package
         run: |
-          pip install jupyter jupyterlab
+          pip install jupyter jupyterlab jupyter-packaging ipywidgets ipydatawidgets
           pip install .
 
       - name: Test installation files
