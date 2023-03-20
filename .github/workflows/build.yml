@@ -24,7 +24,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-
+      - name: Run Python commands
+        run: |
+          pip install --upgrade pip
+          python3.10 -m venv env
+          source env/bin/activate
+          echo "VIRTUAL ENV:" $VIRTUAL_ENV
       - name: Install the package
         run: |
           pip install jupyter jupyterlab
@@ -41,8 +46,8 @@ jobs:
 
       - name: Validate the nbextension
         run: |
-          jupyter nbextension install --py nbvv
-          jupyter nbextension enable nbvv --py
+          jupyter nbextension install --py nbvv --sys-prefix
+          jupyter nbextension enable nbvv --py --sys-prefix
           jupyter nbextension list 2>&1 | grep "nbvv/extension"
 
       - name: Validate the labextension
