@@ -1,3 +1,100 @@
 [build-system]
-requires = ["jupyter_packaging>=0.7.9", "jupyterlab>=3.0", "setuptools>=40.8.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = [
+    "hatchling",
+    "jupyterlab>=3.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "nbvv"
+description = "Interactive volumetric voxel viewing"
+readme = "README.md"
+authors = [
+    { name = "AICS", email = "danielt@alleninstitute.org" },
+]
+keywords = [
+    "ipython",
+    "jupyter",
+    "volume rendering",
+    "widgets",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: IPython",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Multimedia :: Graphics",
+]
+dependencies = [
+    "ipydatawidgets>=4.3.2",
+    "ipywidgets>=8.0.4",
+    "jupyter-packaging>=0.12.3",
+    "jupyter>=1.0.0",
+    "jupyterlab>=3.5.2",
+    "numpy>=1.14.3",
+    "scikit-image>=0.13.0",
+    "scipy>=1.0.0",
+]
+version = "1.5.0"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/allen-cell-animated/nbvv"
+
+[tool.hatch.build]
+artifacts = [
+    "nbvv/static/",
+]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"share/jupyter/nbextensions/nbvv/*.js" = "share/jupyter/nbextensions/nbvv/*.js"
+"share/jupyter/labextensions/nbvv/*" = "share/jupyter/labextensions/nbvv/*"
+"share/jupyter/labextensions/nbvv/static/*" = "share/jupyter/labextensions/nbvv/static/*"
+"etc/jupyter/nbconfig/notebook.d/nbvv.json" = "etc/jupyter/nbconfig/notebook.d/nbvv.json"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    ".github",
+]
+
+[tool.hatch.build.hooks.jupyter-builder]
+ensured-targets = [
+    "js/lib/index.js",
+    "share/jupyter/nbextensions/nbvv/index.js",
+]
+dependencies = [
+    "hatch-jupyter-builder>=0.8.2",
+]
+build-function = "hatch_jupyter_builder.npm_builder"
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+path = "js"
+build_cmd = "build"
+
+[tool.tbump]
+field = [
+    { name = "channel", default = "" },
+    { name = "release", default = "" },
+]
+
+[tool.tbump.version]
+current = "1.5.0"
+regex = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)((?P<channel>a|b|rc|.dev)(?P<release>\\d+))?"
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+version_template = "version = \"{major}.{minor}.{patch}{channel}{release}\""
+
+[[tool.tbump.file]]
+src = "nbvv/_version.py"

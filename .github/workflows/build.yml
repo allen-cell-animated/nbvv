@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: '*'
+    branches: "*"
 
 env:
   PIP_DISABLE_PIP_VERSION_CHECK: 1
@@ -14,39 +14,46 @@ defaults:
     shell: bash -l {0}
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Run Python commands
+        run: |
+          pip install --upgrade pip
+          python3.10 -m venv env
+          source env/bin/activate
+          echo "VIRTUAL ENV:" $VIRTUAL_ENV
+      - name: Install the package
+        run: |
+          source env/bin/activate
+          pip install jupyter jupyterlab
+          pip install .
 
-    - name: Set up Python
-      uses: actions/setup-python@v1
-      with:
-        python-version: "3.10"
+      - name: Test installation files
+        run: |
+          source env/bin/activate
+          test -d share/jupyter/nbextensions/nbvv
+          test -f share/jupyter/nbextensions/nbvv/extension.js
+          test -f share/jupyter/nbextensions/nbvv/index.js
+          test -d share/jupyter/labextensions/nbvv
+          test -f share/jupyter/labextensions/nbvv/package.json
+          test -d share/jupyter/labextensions/nbvv/static
 
-    - name: Install the package
-      run: |
-        pip install jupyter jupyterlab jupyter-packaging
-        pip install .
+      - name: Validate the nbextension
+        run: |
+          source env/bin/activate
+          jupyter nbextension install --py nbvv --sys-prefix
+          jupyter nbextension enable nbvv --py --sys-prefix
+          jupyter nbextension list 2>&1 | grep "nbvv/extension"
 
-    - name: Test installation files
-      run: |
-        test -d share/jupyter/nbextensions/nbvv
-        test -f share/jupyter/nbextensions/nbvv/extension.js
-        test -f share/jupyter/nbextensions/nbvv/index.js
-        test -d share/jupyter/labextensions/nbvv
-        test -f share/jupyter/labextensions/nbvv/package.json
-        test -d share/jupyter/labextensions/nbvv/static
-
-    - name: Validate the nbextension
-      run: |
-        jupyter nbextension install --py nbvv --sys-prefix
-        jupyter nbextension enable nbvv --py --sys-prefix
-        jupyter nbextension list 2>&1 | grep "nbvv/extension"
-
-    - name: Validate the labextension
-      run: jupyter labextension list 2>&1 | grep nbvv
-
+      - name: Validate the labextension
+        run: |
+          source env/bin/activate
+          jupyter labextension list 2>&1 | grep nbvv
