@@ -34,8 +34,8 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@aics/web-3d-viewer": "^2.5.0",
-    "@jupyter-widgets/jupyterlab-manager": "^0.28.0",
+    "@aics/web-3d-viewer": "^2.6.0",
+    "@jupyter-widgets/jupyterlab-manager": "^5.0.7",
     "antd": "~3.20.x",
     "chokidar": "^3.4.1",
     "lodash": "^4.17.4",

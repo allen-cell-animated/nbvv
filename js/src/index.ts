@@ -73,6 +73,7 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
             resetCameraButton: true,
             showAxesButton: true,
             showBoundingBoxButton: true,
+            metadataViewer: true,
           },
           viewerConfig: {
             showAxes: true,
@@ -88,11 +89,8 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
             levels: [0, 128, 255],
           },
           baseUrl: "",
-          nextImgPath: "",
-          prevImgPath: "",
           cellDownloadHref: "",
           fovDownloadHref: "",
-          preLoad: false,
           canvasMargin: "",
         },
 
