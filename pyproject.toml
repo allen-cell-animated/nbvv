@@ -98,3 +98,4 @@ version_template = "version = \"{major}.{minor}.{patch}{channel}{release}\""
 
 [[tool.tbump.file]]
 src = "nbvv/_version.py"
+version_template = "version_info = ({major}, {minor}, {patch}, \"final\", 0)"
