@@ -34,7 +34,7 @@ jobs:
         run: |
           source env/bin/activate
           pip install jupyter jupyterlab ipywidgets jupyter-packaging
-          pip install .
+          pip install -e .
 
       - name: Test installation files
         run: |
