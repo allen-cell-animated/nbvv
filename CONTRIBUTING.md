@@ -19,11 +19,17 @@ you'd like to see documented.
 
 ### To release a new version of nbvv on PyPI:
 
+- Ensure repo is clean of changes
+- pip install tbump
+- tbump X.X.X
+- follow prompts - the changes will be committed and tagged and pushed
+
+Alternative Manual steps:
+
 - Update nbvv/\_version.py
-- And update js/package.json to have the same version number.
-- Then npm install to update js/package-lock.json with current dependencies and version.
+- Update pyproject.toml to have the same version number.
 - git add the updated files and git commit
-- `git tag -a vX.X.X -m 'comment'`
+- `git tag -a vX.X.X -m 'vX.X.X'`
 - `git push`
 - `git push --tags`
 
@@ -33,12 +39,6 @@ You may alternatively use `npm version` to increment `version` in package.json
 and package-lock.json and add a tagged commit all in one step. If so, update
 nbvv/\_version.py first and **ensure that the version numbers in \_version.py
 and package.json match** before pushing your changes.
-
-### To release a new version of nbvv on NPM:
-
-- clean out the `dist` and `node_modules` directories: `git clean -fdx`
-- `npm install`
-- `npm publish`
 
 ## How to Contribute
 
