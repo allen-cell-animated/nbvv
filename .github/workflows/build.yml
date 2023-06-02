@@ -49,8 +49,8 @@ jobs:
       - name: Validate the nbextension
         run: |
           source env/bin/activate
-          jupyter nbextension install --py nbvv --sys-prefix
-          jupyter nbextension enable nbvv --py --sys-prefix
+          jupyter nbextension install --py --overwrite --symlink --sys-prefix nbvv
+          jupyter nbextension enable --py --sys-prefix nbvv
           jupyter nbextension list 2>&1 | grep "nbvv/extension"
 
       - name: Validate the labextension
