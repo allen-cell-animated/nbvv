@@ -5,7 +5,10 @@ import numpy
 import traitlets
 from typing import List, Tuple
 
-semver_range_frontend = "~" + nbvv._version.__version_semantic__
+# use this line if we are keeping package.json version up to date:
+# semver_range_frontend = "~" + nbvv._version.__version_semantic__
+# instead, we are keeping package.json at 1.0.0 for now
+semver_range_frontend = "~1.0.0"
 
 
 @ipywidgets.register
