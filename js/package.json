@@ -1,6 +1,6 @@
 {
   "name": "nbvv",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "NoteBook Volume Viewer component for jupyter extension",
   "author": "aics",
   "main": "lib/index.js",
