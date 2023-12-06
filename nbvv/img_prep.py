@@ -3,6 +3,9 @@ import numpy
 import scipy.ndimage
 import skimage.transform
 import scipy.misc
+from typing import List, Tuple, Dict, Any, TypedDict
+from dataclasses import dataclass
+
 
 __all__ = ["img_prep"]
 
@@ -72,31 +75,20 @@ def atlas_dimensions(
         atlas_height = tile_height * rows
 
     dims = {
-        "tile_width": int(tile_width),
-        "tile_height": int(tile_height),
-        "rows": int(rows),
-        "cols": int(cols),
-        "atlas_width": int(atlas_width),
-        "atlas_height": int(atlas_height),
-        "width": aics_image.shape[3],
-        "height": aics_image.shape[2],
-        "channels": aics_image.shape[0],
-        "tiles": aics_image.shape[1],
+        "name": "Image0",
+        "sizeX": aics_image.shape[3],
+        "sizeY": aics_image.shape[2],
+        "sizeZ": aics_image.shape[1],
+        "sizeC": aics_image.shape[0],
+        "physicalPixelSize": physical_pixel_size
+        if physical_pixel_size is not None
+        else [1, 1, 1],
+        "spatialUnit": "µm",
+        "channelNames": channel_names
+        if channel_names is not None
+        else ["CH_" + str(i) for i in range(aics_image.shape[0])],
+        "userData": {},
     }
-
-    if channel_names is not None:
-        dims["channel_names"] = [str(i) for i in channel_names]
-    else:
-        dims["channel_names"] = ["CH_" + str(i) for i in range(aics_image.shape[0])]
-
-    if physical_pixel_size is not None:
-        dims["pixel_size_x"] = physical_pixel_size[0]
-        dims["pixel_size_y"] = physical_pixel_size[1]
-        dims["pixel_size_z"] = physical_pixel_size[2]
-    else:
-        dims["pixel_size_x"] = 1
-        dims["pixel_size_y"] = 1
-        dims["pixel_size_z"] = 1
 
     return dims
 

@@ -1,7 +1,8 @@
 import * as widgets from "@jupyter-widgets/base";
-import { ImageViewerApp } from "@aics/web-3d-viewer";
 import React from "react";
 import ReactDOM from "react-dom";
+
+import { ImageViewerApp, ViewMode } from "@aics/web-3d-viewer";
 
 // Styles are copied into lib, then compiled by webpack less-loader
 import "./style.less";
@@ -56,12 +57,13 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
           cellId: "",
           cellPath: "",
           fovPath: "",
-          renderConfig: {
-            alphaMask: true,
+          showControls: {
+            alphaMaskSlider: true,
             autoRotateButton: true,
             axisClipSliders: true,
             brightnessSlider: true,
-            colorPicker: true,
+            boundingBoxColorPicker: true,
+            backgroundColorPicker: true,
             colorPresetsDropdown: true,
             densitySlider: true,
             fovCellSwitchControls: false,
@@ -69,20 +71,18 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
             levelsSliders: true,
             saveSurfaceButtons: true,
             viewModeRadioButtons: true,
-
             resetCameraButton: true,
             showAxesButton: true,
             showBoundingBoxButton: true,
             metadataViewer: true,
           },
-          viewerConfig: {
+          viewerSettings: {
             showAxes: true,
             showBoundingBox: true,
             boundingBoxColor: [255, 255, 255],
             backgroundColor: [0, 0, 0],
             autorotate: false,
-            view: "3D",
-            mode: "3D",
+            viewMode: ViewMode.threeD,
             maskAlpha: 0.0,
             brightness: 75.0,
             density: 10.0,
@@ -93,7 +93,6 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
           fovDownloadHref: "",
           canvasMargin: "",
         },
-
         null
       )
     );

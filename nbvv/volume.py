@@ -87,8 +87,8 @@ def volshow(
     image = nbvv.img_prep.img_prep(
         image,  # CZYX
         shape=(
-            volume_widget.dimensions["tile_width"],
-            volume_widget.dimensions["tile_height"],
+            volume_widget.dimensions["sizeX"],
+            volume_widget.dimensions["sizeY"],
         ),
     )
 

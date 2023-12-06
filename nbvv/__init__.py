@@ -1,5 +1,3 @@
-from ._version import version_info, __version__
-
 from .volume import *
 
 
@@ -16,7 +14,12 @@ def _prefix():
 
 
 def _jupyter_labextension_paths():
-    return [{"src": f"{_prefix()}/share/jupyter/labextensions/nbvv/", "dest": "nbvv",}]
+    return [
+        {
+            "src": f"{_prefix()}/share/jupyter/labextensions/nbvv/",
+            "dest": "nbvv",
+        }
+    ]
 
 
 def _jupyter_nbextension_paths():
@@ -28,4 +31,3 @@ def _jupyter_nbextension_paths():
             "require": "nbvv/extension",
         }
     ]
-
