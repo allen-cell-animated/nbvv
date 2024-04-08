@@ -6,8 +6,6 @@ import { ImageViewerApp, ViewMode } from '@aics/web-3d-viewer';
 
 export class VolumeWidgetView extends widgets.DOMWidgetView {
   initialize() {
-    const view = this;
-
     //const metadata = this.model.get("metadata");
     const volume = this.model.get('image');
     //const size = this.model.get("size");
@@ -119,7 +117,7 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
     const $app = document.createElement('div');
     ReactDOM.render(app, $app);
 
-    view.el.append($app);
+    this.el.append($app);
 
     // force a resize event to get the 3d view to refresh with an actual size.
     setTimeout(() => {
