@@ -6,9 +6,9 @@ import traitlets
 from typing import List, Tuple
 
 # use this line if we are keeping package.json version up to date:
-# semver_range_frontend = "~" + nbvv._version.__version_semantic__
+semver_range_frontend = "~" + nbvv._version.__version__
 # instead, we are keeping package.json at 1.0.0 for now
-semver_range_frontend = "~0.1.0"
+# semver_range_frontend = "~2.0.0"
 
 
 @ipywidgets.register
