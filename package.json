@@ -198,6 +198,10 @@
         ]
     },
     "stylelint": {
+        "ignoreFiles": [
+            "style/style.css",
+            "style/style_out.css"
+        ],
         "extends": [
             "stylelint-config-recommended",
             "stylelint-config-standard",

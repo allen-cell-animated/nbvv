@@ -4,3 +4,6 @@ node_modules
 **/package.json
 !/package.json
 nbvv
+
+style/style.css
+style/style_out.css
