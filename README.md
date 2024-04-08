@@ -1,78 +1,100 @@
-# Volume Viewer Jupyter Notebook Extension
+# nbvv
 
-Embeds the Allen Institute web-based 3d viewer in Jupyter notebooks
+[![Github Actions Status](/workflows/Build/badge.svg)](/actions/workflows/build.yml)
+A JupyterLab extension for volume viewing
 
----
+This extension is composed of a Python package named `nbvv`
+for the server extension and a NPM package named `nbvv`
+for the frontend extension.
 
-## Description
+## Requirements
 
-Most 3D viewers are far too heavyweight to use for quick visualization tasks when experimenting with tractably-sized (analyzing, checking, ...) 3D volumetric datasets. nbvv is a multichannel volume viewer for interactive data exploration in jupyter. This is a jupyter widget that provides volumetric rendering given a multiple channel zstack as a numpy array.
+- JupyterLab >= 4.0.0
 
-Envisioned user group is anyone who wants a robust and quick way to interactively interrogate volumetric data as part of their workflows; domain which motivated development is multi-channel volumetric light/fluorescence microscopy datasets. The viewer is optimized for volume data that has finer xy resolution than z resolution.
+## Install
 
-## Installation
+To install the extension, execute:
 
-To install from source:
-You will need to make sure nodejs and npm are installed on your system.
-One way to do this is using `nvm`, for example:
-
-```
-nvm install 14.17.0
-nvm use 14.17.0
+```bash
+pip install nbvv
 ```
 
-Make sure you have jupyterlab, jupyter notebook and nbextensions installed (not necessary in every environment):
+## Uninstall
 
-```
-pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install --user
-```
+To remove the extension, execute:
 
-Install nbvv in one of these ways:
-
-- Option 1: Install from PyPi
-  ```
-  pip install nbvv
-  jupyter nbextension install --py nbvv --sys-prefix
-  jupyter nbextension enable nbvv --py --sys-prefix
-  ```
-- Option 2: Run `build.sh` from this repo
-- Option 3: Step-by-step, from source:
-  ```
-  pip install -e .
-  jupyter nbextension install --py --overwrite --symlink --sys-prefix nbvv
-  jupyter nbextension enable --py --sys-prefix nbvv
-  jupyter labextension develop . --overwrite
-  ```
-
-## Documentation
-
-Extended documentation is not available yet. When completed it will be made available at: [allen-cell-animated.github.io/nbvv](https://allen-cell-animated.github.io/nbvv/index.html).
-
-## Quick Start
-
-try the demo notebook:
-
-```
-jupyter notebook examples/demo.ipynb
+```bash
+pip uninstall nbvv
 ```
 
-or likewise with jupyterlab:
+## Troubleshoot
 
-```
-jupyter lab examples/demo.ipynb
-```
+If you are seeing the frontend extension, but it is not working, check
+that the server extension is enabled:
 
-In a Jupyter notebook, load or create volume data in a numpy array.
-The data should be of shape (Z,Y,X) or (C,Z,Y,X) for multi-channel data.
-Display the numpy data using
-
-```
-import nbvv
-nbvv.volshow(mynumpydata, spacing=(1.0, 1.0, 4.0), channel_names=my_list_of_channel_name_strings)
+```bash
+jupyter server extension list
 ```
 
-`volshow` also provides an optional `viewer_height` parameter if you want to make the viewer larger in the notebook. Default is 500 and values should be specified in CSS pixels.
+If the server extension is installed and enabled, but you are not seeing
+the frontend extension, check the frontend extension is installed:
 
-## Development
+```bash
+jupyter labextension list
+```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for information related to developing the code.
+## Contributing
+
+### Development install
+
+Note: You will need NodeJS to build the extension package.
+
+The `jlpm` command is JupyterLab's pinned version of
+[yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
+`yarn` or `npm` in lieu of `jlpm` below.
+
+```bash
+# Clone the repo to your local environment
+# Change directory to the nbvv directory
+# Install package in development mode
+pip install -e "."
+# Link your development version of the extension with JupyterLab
+jupyter labextension develop . --overwrite
+# Server extension must be manually installed in develop mode
+jupyter server extension enable nbvv
+# Rebuild extension Typescript source after making changes
+jlpm build
+```
+
+You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
+
+```bash
+# Watch the source directory in one terminal, automatically rebuilding when needed
+jlpm watch
+# Run JupyterLab in another terminal
+jupyter lab
+```
+
+With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
+
+By default, the `jlpm build` command generates the source maps for this extension to make it easier to debug using the browser dev tools. To also generate source maps for the JupyterLab core extensions, you can run the following command:
+
+```bash
+jupyter lab build --minimize=False
+```
+
+### Development uninstall
+
+```bash
+# Server extension must be manually disabled in develop mode
+jupyter server extension disable nbvv
+pip uninstall nbvv
+```
+
+In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
+command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
+folder is located. Then you can remove the symlink named `nbvv` within that folder.
+
+### Packaging the extension
+
+See [RELEASE](RELEASE.md)

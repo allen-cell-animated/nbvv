@@ -1,9 +1,0 @@
-name: nbvv-env
-channels:
-  - conda-forge
-dependencies:
-  - python=3.6
-  # Core scientific python
-  - scikit-image
-  - numpy
-  - matplotlib

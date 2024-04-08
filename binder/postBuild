@@ -1,8 +1,0 @@
-# install and activate the extension
-pip install .
-jupyter nbextension install --py nbvv
-jupyter nbextension enable nbvv --py
-# extract the example datasets
-cd examples/
-unzip *.zip
-cd ..
