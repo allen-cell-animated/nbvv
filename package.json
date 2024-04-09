@@ -26,7 +26,7 @@
     "style": "style/index.css",
     "repository": {
         "type": "git",
-        "url": ".git"
+        "url": "https://github.com/allen-cell-animated/nbvv.git"
     },
     "scripts": {
         "build": "jlpm build:styles && jlpm build:lib && jlpm build:labextension:dev",
