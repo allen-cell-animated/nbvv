@@ -66,8 +66,8 @@
         "@jupyterlab/coreutils": "^6.0.0",
         "@jupyterlab/services": "^7.0.0",
         "antd": "^3.26.20",
-        "react": "^16.x",
-        "react-dom": "^16.x"
+        "react": "^18.x",
+        "react-dom": "^18.x"
     },
     "devDependencies": {
         "@jupyterlab/builder": "^4.0.0",
