@@ -1,7 +1,9 @@
-# nbvv
+# nbvv : Volume Viewer JupyterLab Extension
 
-[![Github Actions Status](/workflows/Build/badge.svg)](/actions/workflows/build.yml)
+[![Github Actions Status](https://github.com/allen-cell-animated/nbvv/actions/workflows/build.yml/badge.svg)](https://github.com/allen-cell-animated/nbvv/actions/workflows/build.yml/badge.svg)
 A JupyterLab extension for volume viewing
+
+Embeds the Allen Institute for Cell Science's 3d volume viewer into JupyterLab.
 
 This extension is composed of a Python package named `nbvv`
 for the server extension and a NPM package named `nbvv`
