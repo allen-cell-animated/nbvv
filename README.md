@@ -58,13 +58,21 @@ The `jlpm` command is JupyterLab's pinned version of
 ```bash
 # Clone the repo to your local environment
 # Change directory to the nbvv directory
+
+# make sure you are in a Python environment with jupyterlab==4 installed.
+# for example:
+#   conda create -n jupyterlab-ext --override-channels --strict-channel-priority -c conda-forge -c nodefaults jupyterlab=4 nodejs=20 git copier=7 jinja2-time
+
+
 # Install package in development mode
 pip install -e "."
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
-# Server extension must be manually installed in develop mode
-jupyter server extension enable nbvv
-# Rebuild extension Typescript source after making changes
+
+# At this point you should be able to run "jupyter lab", and load the examples/demo.ipynb
+# Note that the example requires numpy and aicsimageio
+
+# During development, rebuild extension Typescript source after making changes
 jlpm build
 ```
 
