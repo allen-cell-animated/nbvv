@@ -1,6 +1,13 @@
-The change log **lists all important changes between different, even unreleased, versions of your project**. It should not contain every commit message, as that information may be too detailed and can be fetched from the version control system too.
+# Changelog
 
-- [keepachangelog.com](http://keepachangelog.com/): How to keep a changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+<!-- <START NEW CHANGELOG ENTRY> -->
+
+<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## [1.0.0] - Initial release
 

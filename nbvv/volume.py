@@ -6,9 +6,9 @@ import traitlets
 from typing import List, Tuple
 
 # use this line if we are keeping package.json version up to date:
-# semver_range_frontend = "~" + nbvv._version.__version_semantic__
+semver_range_frontend = "~" + nbvv._version.__version__
 # instead, we are keeping package.json at 1.0.0 for now
-semver_range_frontend = "~1.0.0"
+# semver_range_frontend = "~2.0.0"
 
 
 @ipywidgets.register
@@ -86,9 +86,10 @@ def volshow(
     # downsample and normalize for browser rendering
     image = nbvv.img_prep.img_prep(
         image,  # CZYX
+        # target downsampled xy size
         shape=(
-            volume_widget.dimensions["tile_width"],
-            volume_widget.dimensions["tile_height"],
+            dims_object["volumeSize"][0],
+            dims_object["volumeSize"][1],
         ),
     )
 

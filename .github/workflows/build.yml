@@ -2,58 +2,97 @@ name: Build
 
 on:
   push:
-    branches: [main]
+    branches: main
   pull_request:
-    branches: "*"
+    branches: '*'
 
-env:
-  PIP_DISABLE_PIP_VERSION_CHECK: 1
-
-defaults:
-  run:
-    shell: bash -l {0}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - name: Run Python commands
-        run: |
-          pip install --upgrade pip
-          python3.10 -m venv env
-          source env/bin/activate
-          echo "VIRTUAL ENV:" $VIRTUAL_ENV
-      - name: Install the package
-        run: |
-          source env/bin/activate
-          pip install jupyter jupyterlab ipywidgets jupyter-packaging
-          pip install -e .
+    - name: Base Setup
+      uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
 
-      - name: Test installation files
-        run: |
-          source env/bin/activate
-          test -d share/jupyter/nbextensions/nbvv
-          test -f share/jupyter/nbextensions/nbvv/extension.js
-          test -f share/jupyter/nbextensions/nbvv/index.js
-          test -d share/jupyter/labextensions/nbvv
-          test -f share/jupyter/labextensions/nbvv/package.json
-          test -d share/jupyter/labextensions/nbvv/static
+    - name: Install dependencies
+      run: python -m pip install -U "jupyterlab>=4.0.0,<5"
 
-      - name: Validate the nbextension
-        run: |
-          source env/bin/activate
-          jupyter nbextension install --py --overwrite --symlink --sys-prefix nbvv
-          jupyter nbextension enable --py --sys-prefix nbvv
-          jupyter nbextension list 2>&1 | grep "nbvv/extension"
+    - name: Lint the extension
+      run: |
+        set -eux
+        jlpm
+        jlpm run lint:check
 
-      - name: Validate the labextension
-        run: |
-          source env/bin/activate
-          jupyter labextension list 2>&1 | grep nbvv
+    - name: Build the extension
+      run: |
+        set -eux
+        python -m pip install .[test]
+
+        jupyter server extension list
+        jupyter server extension list 2>&1 | grep -ie "nbvv.*OK"
+
+        jupyter labextension list
+        jupyter labextension list 2>&1 | grep -ie "nbvv.*OK"
+        python -m jupyterlab.browser_check
+
+    - name: Package the extension
+      run: |
+        set -eux
+
+        pip install build
+        python -m build
+        pip uninstall -y "nbvv" jupyterlab
+
+    - name: Upload extension packages
+      uses: actions/upload-artifact@v3
+      with:
+        name: extension-artifacts
+        path: dist/nbvv*
+        if-no-files-found: error
+
+  test_isolated:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        architecture: 'x64'
+    - uses: actions/download-artifact@v3
+      with:
+        name: extension-artifacts
+    - name: Install and Test
+      run: |
+        set -eux
+        # Remove NodeJS, twice to take care of system and locally installed node versions.
+        sudo rm -rf $(which node)
+        sudo rm -rf $(which node)
+
+        pip install "jupyterlab>=4.0.0,<5" nbvv*.whl
+
+
+        jupyter server extension list
+        jupyter server extension list 2>&1 | grep -ie "nbvv.*OK"
+
+        jupyter labextension list
+        jupyter labextension list 2>&1 | grep -ie "nbvv.*OK"
+        python -m jupyterlab.browser_check --no-browser-test
+
+
+  check_links:
+    name: Check Links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v3
+      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+      - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1

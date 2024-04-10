@@ -1,31 +1,31 @@
-from ._version import version_info, __version__
+try:
+    from ._version import __version__
+except ImportError:
+    # Fallback when using the package in dev mode without installing
+    # in editable mode with pip. It is highly recommended to install
+    # the package from a stable release or in editable mode: https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs
+    import warnings
+
+    warnings.warn("Importing 'nbvv' outside a proper installation.")
+    __version__ = "dev"
 
 from .volume import *
 
 
-def _prefix():
-    import sys
-    from pathlib import Path
-
-    prefix = sys.prefix
-    here = Path(__file__).parent
-    # for when in dev mode
-    if (here.parent / "share/jupyter/nbextensions/nbvv").exists():
-        prefix = here.parent
-    return prefix
-
-
 def _jupyter_labextension_paths():
-    return [{"src": f"{_prefix()}/share/jupyter/labextensions/nbvv/", "dest": "nbvv",}]
+    return [{"src": "labextension", "dest": "nbvv"}]
 
 
-def _jupyter_nbextension_paths():
-    return [
-        {
-            "section": "notebook",
-            "src": f"{_prefix()}/share/jupyter/nbextensions/nbvv/",
-            "dest": "nbvv",
-            "require": "nbvv/extension",
-        }
-    ]
+def _jupyter_server_extension_points():
+    return [{"module": "nbvv"}]
 
+
+def _load_jupyter_server_extension(server_app):
+    """Registers the API handler to receive HTTP requests from the frontend extension.
+
+    Parameters
+    ----------
+    server_app: jupyterlab.labapp.LabApp
+        JupyterLab application instance
+    """
+    pass
