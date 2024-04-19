@@ -34,7 +34,7 @@ def resize(image, output_shape):
 
 
 def atlas_dimensions(
-    aics_image, max_edge=2048, channel_names=None, physical_pixel_size=(1.0, 1.0, 1.0)
+    aics_image, max_edge=4096, channel_names=None, physical_pixel_size=(1.0, 1.0, 1.0)
 ):
     # physicalPixelSize is in xyz order?
 
@@ -78,36 +78,21 @@ def atlas_dimensions(
 
     dims = {
         "name": "Image0",
-        "originalSize": [aics_image.shape[3], aics_image.shape[2], aics_image.shape[1]],
-        "atlasTileDims": [cols, rows],
-        "volumeSize": [tile_width, tile_height, stack_height],
-        "subregionSize": [
-            tile_width,
-            tile_height,
-            stack_height,
-        ],
-        "subregionOffset": [0, 0, 0],
-        "physicalPixelSize": (
-            physical_pixel_size if physical_pixel_size is not None else [1, 1, 1]
-        ),
+        "sizeX": tile_width,
+        "sizeY": tile_height,
+        "sizeZ": stack_height,
+        "sizeC": aics_image.shape[0],
+        "physicalPixelSize": physical_pixel_size if physical_pixel_size is not None else [1, 1, 1],
         "spatialUnit": "µm",
-        "numChannels": aics_image.shape[0],
-        "channelNames": (
+        "channelNames":  (
             channel_names
             if channel_names is not None
             else ["CH_" + str(i) for i in range(aics_image.shape[0])]
         ),
-        "times": 1,
-        "timeScale": 1,
-        "timeUnit": "s",
-        "numMultiscaleLevels": 1,
-        "multiscaleLevel": 0,
-        "transform": {
-            "translation": [0, 0, 0],
-            "rotation": [0, 0, 0],
-        },
     }
-
+    
+    # "originalSize": [aics_image.shape[3], aics_image.shape[2], aics_image.shape[1]],
+ 
     return dims
 
 

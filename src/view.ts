@@ -1,7 +1,6 @@
 import * as widgets from '@jupyter-widgets/base';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Vector2, Vector3 } from 'three';
 import { ImageViewerApp, ViewMode } from '@aics/web-3d-viewer';
 
 export class VolumeWidgetView extends widgets.DOMWidgetView {
@@ -12,28 +11,7 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
     //const density = this.model.get("density");
     //const brightness = this.model.get("brightness");
     const dimensions = this.model.get('dimensions');
-    dimensions.originalSize = new Vector3().fromArray(dimensions.originalSize);
-    dimensions.volumeSize = new Vector3().fromArray(dimensions.volumeSize);
-    dimensions.atlasTileDims = new Vector2().fromArray(
-      dimensions.atlasTileDims
-    );
-    dimensions.subregionSize = new Vector3().fromArray(
-      dimensions.subregionSize
-    );
-    dimensions.subregionOffset = new Vector3().fromArray(
-      dimensions.subregionOffset
-    );
-    dimensions.physicalPixelSize = new Vector3().fromArray(
-      dimensions.physicalPixelSize
-    );
-    dimensions.transform.translation = new Vector3().fromArray(
-      dimensions.transform.translation
-    );
-    dimensions.transform.rotation = new Vector3().fromArray(
-      dimensions.transform.rotation
-    );
 
-    console.log(dimensions);
     const height = this.model.get('layout')?.get('height') || '500px';
 
     // console.log("C = " + volume.shape[0]);
@@ -72,8 +50,8 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
           },
           appHeight: height,
           cellId: '',
-          cellPath: '',
-          fovPath: '',
+          imageUrl: '',
+          parentImageUrl: '',
           showControls: {
             alphaMaskSlider: true,
             autoRotateButton: true,
@@ -105,9 +83,8 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
             density: 10.0,
             levels: [0, 128, 255]
           },
-          baseUrl: '',
-          cellDownloadHref: '',
-          fovDownloadHref: '',
+          imageDownloadHref: '',
+          parentImageDownloadHref: '',
           canvasMargin: ''
         },
         null

@@ -88,8 +88,8 @@ def volshow(
         image,  # CZYX
         # target downsampled xy size
         shape=(
-            dims_object["volumeSize"][0],
-            dims_object["volumeSize"][1],
+            dims_object["sizeX"],
+            dims_object["sizeY"],
         ),
     )
 
