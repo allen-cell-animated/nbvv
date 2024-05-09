@@ -29,10 +29,7 @@
         "url": "https://github.com/allen-cell-animated/nbvv.git"
     },
     "scripts": {
-        "build": "jlpm build:styles && jlpm build:lib && jlpm build:labextension:dev",
-        "less": "lessc --js --math=always style/style.less style/style.css",
-        "postcss": "postcss style/style.css --config postcss.config.js -o style/style_out.css",
-        "build:styles": "jlpm less && jlpm postcss",
+        "build": "jlpm build:lib && jlpm build:labextension:dev",
         "build:prod": "jlpm clean && jlpm build:styles && jlpm build:lib:prod && jlpm build:labextension",
         "build:labextension": "jupyter labextension build .",
         "build:labextension:dev": "jupyter labextension build --development True .",
@@ -65,7 +62,7 @@
         "@jupyterlab/application": "^4.0.0",
         "@jupyterlab/coreutils": "^6.0.0",
         "@jupyterlab/services": "^7.0.0",
-        "antd": "^3.26.20",
+        "antd": "^5.16.2",
         "react": "^18.x",
         "react-dom": "^18.x"
     },
@@ -83,7 +80,6 @@
         "eslint": "^8.36.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^5.0.0",
-        "less": "4.2.0",
         "mkdirp": "^1.0.3",
         "npm-run-all": "^4.1.5",
         "postcss": "^8.4.38",
