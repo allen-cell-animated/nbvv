@@ -56,7 +56,7 @@
         "watch:labextension": "jupyter labextension watch ."
     },
     "dependencies": {
-        "@aics/web-3d-viewer": "^2.8.0",
+        "@aics/web-3d-viewer": "^2.9.0",
         "@babel/runtime": "7.24.1",
         "@jupyter-widgets/base": "^6.0.7",
         "@jupyterlab/application": "^4.0.0",
