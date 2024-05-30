@@ -23,17 +23,13 @@
     ],
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
-    "style": "style/index.css",
     "repository": {
         "type": "git",
         "url": "https://github.com/allen-cell-animated/nbvv.git"
     },
     "scripts": {
-        "build": "jlpm build:styles && jlpm build:lib && jlpm build:labextension:dev",
-        "less": "lessc --js --math=always style/style.less style/style.css",
-        "postcss": "postcss style/style.css --config postcss.config.js -o style/style_out.css",
-        "build:styles": "jlpm less && jlpm postcss",
-        "build:prod": "jlpm clean && jlpm build:styles && jlpm build:lib:prod && jlpm build:labextension",
+        "build": "jlpm build:lib && jlpm build:labextension:dev",
+        "build:prod": "jlpm clean && jlpm build:lib:prod && jlpm build:labextension",
         "build:labextension": "jupyter labextension build .",
         "build:labextension:dev": "jupyter labextension build --development True .",
         "build:lib": "tsc --sourceMap",
@@ -53,19 +49,19 @@
         "prettier:base": "prettier \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
         "prettier:check": "jlpm prettier:base --check",
         "stylelint": "jlpm stylelint:check --fix",
-        "stylelint:check": "stylelint --cache \"style/**/*.css\"",
+        "stylelint:check": "stylelint --cache \"style/**/*.css\" --allow-empty-input",
         "watch": "run-p watch:src watch:labextension",
         "watch:src": "tsc -w --sourceMap",
         "watch:labextension": "jupyter labextension watch ."
     },
     "dependencies": {
-        "@aics/web-3d-viewer": "^2.8.0",
+        "@aics/web-3d-viewer": "^2.9.0",
         "@babel/runtime": "7.24.1",
         "@jupyter-widgets/base": "^6.0.7",
         "@jupyterlab/application": "^4.0.0",
         "@jupyterlab/coreutils": "^6.0.0",
         "@jupyterlab/services": "^7.0.0",
-        "antd": "^3.26.20",
+        "antd": "^5.16.2",
         "react": "^18.x",
         "react-dom": "^18.x"
     },
@@ -83,7 +79,6 @@
         "eslint": "^8.36.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^5.0.0",
-        "less": "4.2.0",
         "mkdirp": "^1.0.3",
         "npm-run-all": "^4.1.5",
         "postcss": "^8.4.38",
@@ -101,11 +96,9 @@
         "typescript": "~5.0.2",
         "yjs": "^13.5.0"
     },
-    "sideEffects": [
-        "style/*.css",
-        "style/index.js"
-    ],
-    "styleModule": "style/index.js",
+    "resolutions": {
+        "d3-selection": "1.3.0"
+    },
     "publishConfig": {
         "access": "public"
     },
