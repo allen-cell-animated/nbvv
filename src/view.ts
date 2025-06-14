@@ -1,7 +1,7 @@
 import * as widgets from '@jupyter-widgets/base';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ImageViewerApp, ViewMode } from '@aics/web-3d-viewer';
+import { ImageViewerApp, ViewMode } from '@aics/vole-app';
 
 export class VolumeWidgetView extends widgets.DOMWidgetView {
   initialize() {
@@ -52,7 +52,7 @@ export class VolumeWidgetView extends widgets.DOMWidgetView {
           cellId: '',
           imageUrl: '',
           parentImageUrl: '',
-          showControls: {
+          visibleControls: {
             alphaMaskSlider: true,
             autoRotateButton: true,
             axisClipSliders: true,
