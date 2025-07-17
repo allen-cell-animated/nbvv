@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@aics/vole-app@npm:^2.12.0":
+"@aics/vole-app@npm:^2.13.0":
   version: 2.13.0
   resolution: "@aics/vole-app@npm:2.13.0"
   dependencies:
@@ -5317,7 +5317,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nbvv@workspace:."
   dependencies:
-    "@aics/vole-app": ^2.12.0
+    "@aics/vole-app": ^2.13.0
     "@babel/runtime": 7.24.1
     "@jupyter-widgets/base": ^6.0.7
     "@jupyterlab/application": ^4.0.0
