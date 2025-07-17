@@ -19,7 +19,7 @@
       "numcodecs": [
         "./node_modules/numcodecs/dist/index.d.ts",
         "./node_modules/numcodecs/index.js"
-      ],
+      ]
     },
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
