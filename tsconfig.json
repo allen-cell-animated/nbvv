@@ -11,6 +11,16 @@
     "noEmitOnError": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
+    "paths": {
+      "@zarrita/storage/fetch": [
+        "./node_modules/@zarrita/storage/dist/src/fetch.ts",
+        "./node_modules/@zarrita/storage/dist/src/fetch.d.ts",
+      ],
+      "numcodecs": [
+        "./node_modules/numcodecs/dist/index.d.ts",
+        "./node_modules/numcodecs/index.js"
+      ],
+    },
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
     "outDir": "lib",
