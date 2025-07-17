@@ -14,7 +14,7 @@
     "paths": {
       "@zarrita/storage/fetch": [
         "./node_modules/@zarrita/storage/dist/src/fetch.ts",
-        "./node_modules/@zarrita/storage/dist/src/fetch.d.ts",
+        "./node_modules/@zarrita/storage/dist/src/fetch.d.ts"
       ],
       "numcodecs": [
         "./node_modules/numcodecs/dist/index.d.ts",
