@@ -116,7 +116,7 @@
         },
         "extension": true,
         "outputDir": "nbvv/labextension",
-        "webpackConfig": "./webpack.config.js"
+        "webpackConfig": "./webpack.config.cjs"
     },
     "eslintIgnore": [
         "node_modules",
