@@ -711,7 +711,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/services@npm:^6 || ^7, @jupyterlab/services@npm:^7.0.0, @jupyterlab/services@npm:^7.4.5":
+"@jupyterlab/services@npm:^6 || ^7, @jupyterlab/services@npm:^7.4.5":
   version: 7.4.5
   resolution: "@jupyterlab/services@npm:7.4.5"
   dependencies:
@@ -5323,7 +5323,6 @@ __metadata:
     "@jupyterlab/application": ^4.0.0
     "@jupyterlab/builder": ^4.0.0
     "@jupyterlab/coreutils": ^6.0.0
-    "@jupyterlab/services": ^7.0.0
     "@tweakpane/core": ^1.1.9
     "@types/json-schema": ^7.0.11
     "@types/react": ^18.0.26
