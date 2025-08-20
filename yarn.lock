@@ -5,11 +5,11 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@aics/vole-app@npm:^2.13.3":
-  version: 2.13.3
-  resolution: "@aics/vole-app@npm:2.13.3"
+"@aics/vole-app@npm:^2.13.4":
+  version: 2.13.4
+  resolution: "@aics/vole-app@npm:2.13.4"
   dependencies:
-    "@aics/vole-core": ^3.15.7
+    "@aics/vole-core": ^4.1.0
     "@ant-design/icons": ^5.2.5
     "@fortawesome/fontawesome-svg-core": ^6.5.2
     "@fortawesome/free-solid-svg-icons": ^6.5.2
@@ -28,13 +28,13 @@ __metadata:
     react: 18.x
     react-dom: 18.x
     three: ^0.171.0
-  checksum: 35269819998d9c6171f567afd8500c3ed5551f498e676b3ed13d24345fc2c5c3dfbac1a780653fef88d68b2998d52271b9d35f2c31f2195fb12d8980293c4cf4
+  checksum: 79f0336c4fec17a18ceae88a432e9517071540166090eedb47bc596a37e31222af239a922ef41389090844b52e92bd86abaacf5371c69400dd0364525eccde59
   languageName: node
   linkType: hard
 
-"@aics/vole-core@npm:^3.15.7":
-  version: 3.15.7
-  resolution: "@aics/vole-core@npm:3.15.7"
+"@aics/vole-core@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@aics/vole-core@npm:4.1.0"
   dependencies:
     "@babel/runtime": ^7.25.6
     geotiff: ^2.0.5
@@ -43,7 +43,7 @@ __metadata:
     throttled-queue: ^2.1.4
     tweakpane: ^3.1.9
     zarrita: ^0.5.1
-  checksum: 24b1e79b2843bbdaaa67606fefd6846bf8530cdee0b4e45e55adbc7b65f25b4f504e83fc106f54ab60766d6836f000f4bf9e42d3bdc33bb496cf0e7f60a02ca1
+  checksum: 3e3b97c33363a041b1a70485f5251bf77be09f03314f0f653f5d6cf503c5b5ffbf0d5fe9bc3feac562ec8b71f189c19a3322a4613e5d524d8df58eac29b04593
   languageName: node
   linkType: hard
 
@@ -5307,7 +5307,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nbvv@workspace:."
   dependencies:
-    "@aics/vole-app": ^2.13.3
+    "@aics/vole-app": ^2.13.4
     "@babel/runtime": 7.24.1
     "@jupyter-widgets/base": ^6.0.7
     "@jupyterlab/application": ^4.0.0
