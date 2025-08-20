@@ -56,7 +56,7 @@
         "watch:labextension": "jupyter labextension watch ."
     },
     "dependencies": {
-        "@aics/vole-app": "^2.13.2",
+        "@aics/vole-app": "^2.13.3",
         "@babel/runtime": "7.24.1",
         "@jupyter-widgets/base": "^6.0.7",
         "@jupyterlab/application": "^4.0.0",
