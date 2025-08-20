@@ -82,17 +82,19 @@ def atlas_dimensions(
         "sizeY": tile_height,
         "sizeZ": stack_height,
         "sizeC": aics_image.shape[0],
-        "physicalPixelSize": physical_pixel_size if physical_pixel_size is not None else [1, 1, 1],
+        "physicalPixelSize": (
+            physical_pixel_size if physical_pixel_size is not None else [1, 1, 1]
+        ),
         "spatialUnit": "µm",
-        "channelNames":  (
+        "channelNames": (
             channel_names
             if channel_names is not None
             else ["CH_" + str(i) for i in range(aics_image.shape[0])]
         ),
     }
-    
+
     # "originalSize": [aics_image.shape[3], aics_image.shape[2], aics_image.shape[1]],
- 
+
     return dims
 
 
@@ -118,7 +120,7 @@ def img_prep(img, shape=(128, 128)):
 
     # C Z Y X
     response = numpy.zeros(
-        (channels, img.shape[1], shape[1], shape[0]), dtype=numpy.uint8
+        (channels, img.shape[1], shape[1], shape[0]), dtype=img.dtype
     )
 
     for channel_index in range(channels):
@@ -127,11 +129,11 @@ def img_prep(img, shape=(128, 128)):
 
         resized_channel = resize(channel_data, (shape[0], shape[1]))
 
-        mn = min(0, resized_channel.min())
-        mx = resized_channel.max()
-        resized_channel = 255.0 * (resized_channel - mn) / (mx - mn)
-        # atlas = np.interp(atlas, (min(0, atlas.min()), atlas.max()), (0.0, 255.0))
-        resized_channel = resized_channel.astype(numpy.uint8)
+        # mn = min(0, resized_channel.min())
+        # mx = resized_channel.max()
+        # resized_channel = 255.0 * (resized_channel - mn) / (mx - mn)
+
+        # resized_channel = resized_channel.astype(numpy.uint8)
 
         response[channel_index] = resized_channel
 
