@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@aics/vole-app@npm:^2.13.4":
-  version: 2.13.4
-  resolution: "@aics/vole-app@npm:2.13.4"
+"@aics/vole-app@npm:^2.13.5":
+  version: 2.13.5
+  resolution: "@aics/vole-app@npm:2.13.5"
   dependencies:
     "@aics/vole-core": ^4.1.0
     "@ant-design/icons": ^5.2.5
@@ -28,7 +28,7 @@ __metadata:
     react: 18.x
     react-dom: 18.x
     three: ^0.171.0
-  checksum: 79f0336c4fec17a18ceae88a432e9517071540166090eedb47bc596a37e31222af239a922ef41389090844b52e92bd86abaacf5371c69400dd0364525eccde59
+  checksum: eaeb200dabe39119f4d0ff8d4e68c391e9754d378e67406d34b5d97dffc89317119c98da67e04246847f0718b7932248d9ebbf8dd6804dcd979935d0070b9487
   languageName: node
   linkType: hard
 
@@ -5307,7 +5307,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nbvv@workspace:."
   dependencies:
-    "@aics/vole-app": ^2.13.4
+    "@aics/vole-app": ^2.13.5
     "@babel/runtime": 7.24.1
     "@jupyter-widgets/base": ^6.0.7
     "@jupyterlab/application": ^4.0.0
