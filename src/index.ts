@@ -7,7 +7,7 @@ import * as base from '@jupyter-widgets/base';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const semver_range = require('../package.json').version;
 
-import * as jupyter_volume from './view';
+import * as jupyter_volume from './view.js';
 
 /**
  * Initialization data for the nbvv extension.

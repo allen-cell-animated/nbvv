@@ -1,0 +1,100 @@
+import * as widgets from '@jupyter-widgets/base';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { ImageViewerApp, ViewerStateProvider, ViewMode } from '@aics/vole-app';
+import type { AppProps } from '@aics/vole-app';
+
+export class VolumeWidgetView extends widgets.DOMWidgetView {
+  initialize() {
+    //const metadata = this.model.get("metadata");
+    const volume = this.model.get('image');
+    //const size = this.model.get("size");
+    //const density = this.model.get("density");
+    //const brightness = this.model.get("brightness");
+    const dimensions = this.model.get('dimensions');
+
+    const height = this.model.get('layout')?.get('height') || '500px';
+
+    // console.log("C = " + volume.shape[0]);
+    // console.log("Z = " + volume.shape[1]);
+    // console.log("Y = " + volume.shape[2]);
+    // console.log("X = " + volume.shape[3]);
+    // console.log(dimensions);
+
+    //var volsize = volume.shape[1] * volume.shape[2] * volume.shape[3];
+    //var channels = volume.shape[0];
+    //var tiles = volume.shape[1]; // slices
+
+    const viewerProps: AppProps = {
+      rawData: volume,
+      rawDims: dimensions,
+      viewerChannelSettings: {
+        groups: [
+          {
+            name: 'Channels',
+            channels: dimensions.channelNames.map(
+              (name: string, index: number) => ({
+                match: name,
+                enabled: index < 3
+              })
+            )
+          }
+        ]
+      },
+      appHeight: height,
+      cellId: '',
+      imageUrl: '',
+      parentImageUrl: '',
+      visibleControls: {
+        alphaMaskSlider: true,
+        autoRotateButton: true,
+        axisClipSliders: true,
+        brightnessSlider: true,
+        boundingBoxColorPicker: true,
+        backgroundColorPicker: true,
+        colorPresetsDropdown: true,
+        densitySlider: true,
+        fovCellSwitchControls: false,
+        interpolationControl: true,
+        levelsSliders: true,
+        saveSurfaceButtons: true,
+        viewModeRadioButtons: true,
+        resetCameraButton: true,
+        showAxesButton: true,
+        showBoundingBoxButton: true,
+        metadataViewer: true
+      },
+      viewerSettings: {
+        showAxes: true,
+        showBoundingBox: true,
+        boundingBoxColor: [255, 255, 255],
+        backgroundColor: [0, 0, 0],
+        autorotate: false,
+        viewMode: ViewMode.threeD,
+        maskAlpha: 0.0,
+        brightness: 75.0,
+        density: 10.0,
+        levels: [0, 128, 255]
+      },
+      imageDownloadHref: '',
+      parentImageDownloadHref: '',
+      canvasMargin: ''
+    };
+
+    const container = document.createElement('div');
+    this.el.append(container);
+    const root = createRoot(container);
+    root.render(
+      <div className="cell-viewer">
+        <ViewerStateProvider>
+          <ImageViewerApp {...viewerProps} />
+        </ViewerStateProvider>
+      </div>
+    );
+
+    // force a resize event to get the 3d view to refresh with an actual size.
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 200);
+  }
+}

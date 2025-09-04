@@ -3,7 +3,7 @@ import ipywidgets
 import nbvv.img_prep
 import numpy
 import traitlets
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 # use this line if we are keeping package.json version up to date:
 semver_range_frontend = "~" + nbvv._version.__version__
@@ -39,7 +39,7 @@ def volshow(
     spacing: Tuple[float, float, float] = (1.0, 1.0, 1.0),
     density: float = 0.1,
     brightness: float = 1.0,
-    channel_names: List[str] = None,
+    channel_names: Optional[List[str]] = None,
     viewer_height: int = 500,
 ):
     """
