@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> We are no longer actively maintaining this repository. All active work by the Allen Institute for Cell Science is located under the **[AllenCell](https://github.com/AllenCell)** organization.
+
+
 # nbvv : Volume Viewer JupyterLab Extension
 
 [![Github Actions Status](https://github.com/allen-cell-animated/nbvv/actions/workflows/build.yml/badge.svg)](https://github.com/allen-cell-animated/nbvv/actions/workflows/build.yml/badge.svg)
